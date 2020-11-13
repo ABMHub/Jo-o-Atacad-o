@@ -7,6 +7,7 @@ package telas;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import joaoatacadao.JoaoAtacadao;
 
 /**
  *
@@ -15,11 +16,9 @@ import javax.swing.table.DefaultTableModel;
 public class ListarProdutos extends javax.swing.JFrame {
 
     private int pagina = 0;
-    private ArrayList produtos; //<produto>
     
-    public ListarProdutos(ArrayList produtos) {
+    public ListarProdutos() {
         initComponents();
-        this.produtos = produtos;
     }
     
     private DefaultTableModel criaTabela(ArrayList produtos, int pagina) {
@@ -174,18 +173,18 @@ public class ListarProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarActionPerformed
 
     private void btnPesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTodosActionPerformed
-        criaTabela(produtos, 0);
+        criaTabela(JoaoAtacadao.produtos, 0);
         pagina = 0;
     }//GEN-LAST:event_btnPesquisarTodosActionPerformed
 
     private void btnDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireitaActionPerformed
         pagina += 1;
-        criaTabela(produtos, pagina);
+        criaTabela(JoaoAtacadao.produtos, pagina);
     }//GEN-LAST:event_btnDireitaActionPerformed
 
     private void btnEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsquerdaActionPerformed
         pagina -= 1;
-        criaTabela(produtos, pagina);
+        criaTabela(JoaoAtacadao.produtos, pagina);
     }//GEN-LAST:event_btnEsquerdaActionPerformed
 
     /**

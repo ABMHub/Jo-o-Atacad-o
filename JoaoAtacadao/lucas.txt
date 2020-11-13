@@ -1,0 +1,12 @@
+codigo:1234,
+classe:eletroeletronico,
+nome:lucas,
+idade:sla;
+codigo:4312:
+classe:vestuario,
+nome:jp,
+idade:20;
+classe:eletroeletronico:
+codigo:1234:
+nome:lucas:
+idade:sla;
