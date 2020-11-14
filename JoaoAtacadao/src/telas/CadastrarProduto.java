@@ -52,14 +52,39 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         btnPerifericos.setText("Periféricos");
+        btnPerifericos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerifericosActionPerformed(evt);
+            }
+        });
 
         bntCelulares.setText("Celulares");
+        bntCelulares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntCelularesActionPerformed(evt);
+            }
+        });
 
         btnComputadores.setText("Computadores");
+        btnComputadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComputadoresActionPerformed(evt);
+            }
+        });
 
         btnEletroeletronicos.setText("Eletroeletrônicos");
+        btnEletroeletronicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEletroeletronicosActionPerformed(evt);
+            }
+        });
 
         btnVestuario.setText("Vestuário");
+        btnVestuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVestuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,9 +137,34 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
     private void btnLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLivrosActionPerformed
         new TelaCadastraProduto("livros").setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
         
     }//GEN-LAST:event_btnLivrosActionPerformed
+
+    private void btnPerifericosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerifericosActionPerformed
+        new TelaCadastraProduto("perifericos").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPerifericosActionPerformed
+
+    private void bntCelularesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCelularesActionPerformed
+        new TelaCadastraProduto("celulares").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bntCelularesActionPerformed
+
+    private void btnComputadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadoresActionPerformed
+        new TelaCadastraProduto("computadores").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnComputadoresActionPerformed
+
+    private void btnEletroeletronicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEletroeletronicosActionPerformed
+        new TelaCadastraProduto("eletroeletronicos").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnEletroeletronicosActionPerformed
+
+    private void btnVestuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVestuarioActionPerformed
+        new TelaCadastraProduto("vestuario").setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVestuarioActionPerformed
 
     /**
      * @param args the command line arguments

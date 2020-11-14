@@ -21,9 +21,8 @@ public class BancoDeDados {
     
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
-        for (int i = 0; i < 1000; i++) {
-            bufferDeEscrita.append(dadoQueSeraEscrito);
-        }
+        bufferDeEscrita.append(dadoQueSeraEscrito);
+        
         bufferDeEscrita.close();
     }
     

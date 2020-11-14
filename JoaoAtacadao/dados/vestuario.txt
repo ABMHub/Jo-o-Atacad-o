@@ -1,0 +1,8 @@
+Nome:435,
+Código:33,
+Valor:33,
+Marca:44,
+Tamanho:555,
+Cor:666,
+Material:222;
+

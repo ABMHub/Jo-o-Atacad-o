@@ -90,26 +90,41 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Perif&#xe9;ricos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPerifericosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bntCelulares">
       <Properties>
         <Property name="text" type="java.lang.String" value="Celulares"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntCelularesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnComputadores">
       <Properties>
         <Property name="text" type="java.lang.String" value="Computadores"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnComputadoresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEletroeletronicos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eletroeletr&#xf4;nicos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEletroeletronicosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVestuario">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vestu&#xe1;rio"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVestuarioActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
