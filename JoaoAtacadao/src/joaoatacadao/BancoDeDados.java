@@ -19,11 +19,21 @@ import java.util.Scanner;
  */
 public class BancoDeDados {
     
+    public static String[] concatArray(String[] vetor, String[] vetor2) {
+        String[] vetorRetorno = new String[vetor.length + vetor2.length];
+        for (int i = 0; i < vetor.length; i++) {
+            vetorRetorno[i] = vetor[i];
+        }
+        for (int i = vetor.length; i < vetor.length + vetor2.length; i++) {
+            vetorRetorno[i] = vetor2[i-vetor.length];
+        }
+        return vetorRetorno;
+    }
+    
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
-        for (int i = 0; i < 1000; i++) {
-            bufferDeEscrita.append(dadoQueSeraEscrito);
-        }
+        bufferDeEscrita.append(dadoQueSeraEscrito);
+        
         bufferDeEscrita.close();
     }
     
@@ -31,6 +41,9 @@ public class BancoDeDados {
         Scanner entrada = new Scanner(new File(arquivo));
         entrada.useDelimiter(codigo);
         entrada.next();
+        
+        entrada.useDelimiter(",");
+        String[] codigoAux = {entrada.next()};
         
         entrada.useDelimiter("\n");
         entrada.next();
@@ -45,8 +58,10 @@ public class BancoDeDados {
             vetor[i] = (vetor[i].split(":"))[1];
         }
         
+        String[] arrayRetorno = concatArray(codigoAux, vetor);
+        
         entrada.close();
-        return vetor;
+        return arrayRetorno;
     }
     
     public static ArrayList leitura(String arquivo, int pg) throws FileNotFoundException {
@@ -63,7 +78,7 @@ public class BancoDeDados {
         
         ArrayList lista = new ArrayList();
         
-        for (int j = 0; j < 10; j++){
+        for (int j = 0; j < 10; j++) {
             entrada.useDelimiter(";");
             String[] vetor = entrada.next().split(",");
             for (int i = 0; i < vetor.length; i++) {

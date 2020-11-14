@@ -20,6 +20,7 @@ import joaoatacadao.JoaoAtacadao;
 public class ListarProdutos extends javax.swing.JFrame {
 
     private int pagina = 0;
+    private String arquivo = new String("lucas.txt");
     
     public ListarProdutos() {
         initComponents();
@@ -111,7 +112,7 @@ public class ListarProdutos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Marca", "Preço"
+                "Nome", "Código", "Preço", "Marca"
             }
         ));
         jScrollPane1.setViewportView(tblProdutos);
@@ -219,7 +220,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         ArrayList lista = new ArrayList();
         pagina = 0;
         try {
-            lista = BancoDeDados.leitura("lucas.txt", pagina);
+            lista = BancoDeDados.leitura(arquivo, pagina);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -232,7 +233,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         ArrayList lista = null;
         pagina += 1;
         try {
-            lista = BancoDeDados.leitura("lucas.txt", pagina);
+            lista = BancoDeDados.leitura(arquivo, pagina);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -248,7 +249,7 @@ public class ListarProdutos extends javax.swing.JFrame {
             return;
         pagina -= 1;
         try {
-            lista = BancoDeDados.leitura("lucas.txt", pagina);
+            lista = BancoDeDados.leitura(arquivo, pagina);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -262,7 +263,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         String codigo = txtPesquisar.getText();
         String[] lista = null;
         try {
-            lista = BancoDeDados.pesquisa("lucas.txt", codigo);
+            lista = BancoDeDados.pesquisa(arquivo, codigo);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
