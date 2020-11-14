@@ -8,6 +8,7 @@ package joaoatacadao;
 
 import java.io.IOException;
 import java.util.Arrays;
+import telas.CadastrarProduto;
 
 /**
  *
@@ -15,8 +16,8 @@ import java.util.Arrays;
  */
 public class JoaoAtacadao {    
     
-    public static void main(String[] args) throws IOException {
-        System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
+    public static void main(String[] args) {
+        new CadastrarProduto().setVisible(true); 
     }
     
 }

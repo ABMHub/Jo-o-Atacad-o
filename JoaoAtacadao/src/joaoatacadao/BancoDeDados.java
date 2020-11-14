@@ -26,7 +26,7 @@ public class BancoDeDados {
         bufferDeEscrita.close();
     }
     
-    public static String[] leitor(String arquivo, String codigo) throws FileNotFoundException {
+    public static String[] pesquisa(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
         entrada.useDelimiter(codigo);
         entrada.next();
