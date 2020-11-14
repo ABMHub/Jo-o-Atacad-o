@@ -6,8 +6,6 @@
 
 package joaoatacadao;
 
-import java.io.IOException;
-import java.util.Arrays;
 import telas.CadastrarProduto;
 
 /**
@@ -16,8 +14,11 @@ import telas.CadastrarProduto;
  */
 public class JoaoAtacadao {    
     
+        
     public static void main(String[] args) {
+        //new NewJFrame().setVisible(true);
         new CadastrarProduto().setVisible(true); 
+        //System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
     }
     
 }

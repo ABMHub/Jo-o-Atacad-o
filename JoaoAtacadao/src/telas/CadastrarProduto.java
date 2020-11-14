@@ -106,7 +106,8 @@ public class CadastrarProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilmesActionPerformed
-        // TODO add your handling code here:
+        new TelaCadastraProduto("filmes").setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnFilmesActionPerformed
 
     private void btnLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLivrosActionPerformed

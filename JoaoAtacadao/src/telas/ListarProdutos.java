@@ -5,8 +5,12 @@
  */
 package telas;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import joaoatacadao.BancoDeDados;
 import joaoatacadao.JoaoAtacadao;
 
 /**
@@ -19,25 +23,37 @@ public class ListarProdutos extends javax.swing.JFrame {
     
     public ListarProdutos() {
         initComponents();
+        carregaGerentes();
     }
     
-    private DefaultTableModel criaTabela(ArrayList produtos, int pagina) {
-        DefaultTableModel modelo = new DefaultTableModel( new Object[] { "Nome", "Idade", "Salário", "Diretor?", "Filme" } , 0);
+    public void carregaGerentes () {
+        cmbDepartamentos.removeAllItems();
         
-        for (int i = 10*pagina; i < produtos.size()%10 + pagina*10; i++ ){
+        cmbDepartamentos.addItem("Selecione um Departamento");
+        cmbDepartamentos.addItem("Livros");
+        cmbDepartamentos.addItem("Filmes");
+        cmbDepartamentos.addItem("Periféricos");
+        cmbDepartamentos.addItem("Celulares");
+        cmbDepartamentos.addItem("Computadores");
+        cmbDepartamentos.addItem("Eletroeletrônicos");
+        cmbDepartamentos.addItem("Vestuário");
+        
+    }
+    
+    private void criaTabela(ArrayList<String[]> produtos) {
+        DefaultTableModel modelo = new DefaultTableModel( new Object[] { "Código", "Nome", "Marca", "Preço" } , 0);
+        
+        for (int i = 0; i < produtos.size(); i++ ){
             Object linha[] = new Object[] {
-                //participantes.get(i).getNome(),
-                //participantes.get(i).getIdade(),
-                //participantes.get(i).getSalario(),
-                //participantes.get(i).isDiretor() ? "Sim" : "Não",
-                //participantes.get(i).getFilme() == null ?
-                    //"Sem filme" :
-                    //participantes.get(i).getFilme().getNome()
+                produtos.get(i)[0],
+                produtos.get(i)[1],
+                produtos.get(i)[2],
+                produtos.get(i)[3]
             };
             
             modelo.addRow(linha);
         }
-        return modelo;
+        tblProdutos.setModel(modelo);
     }
 
     /**
@@ -55,9 +71,11 @@ public class ListarProdutos extends javax.swing.JFrame {
         btnPesquisarTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        btnEsquerda = new javax.swing.JButton();
-        btnDireita = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        cmbDepartamentos = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,6 +90,11 @@ public class ListarProdutos extends javax.swing.JFrame {
         lblPesquisar.setText("Código");
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         btnPesquisarTodos.setText("Listar Todos");
         btnPesquisarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -93,74 +116,93 @@ public class ListarProdutos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblProdutos);
 
-        btnEsquerda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnEsquerda.setText("🡄");
-        btnEsquerda.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton1.setText("🡄");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEsquerdaActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btnDireita.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnDireita.setText("🡆");
-        btnDireita.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton2.setText("🡆");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDireitaActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Pesquisa de Produtos");
 
+        cmbDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setText("Departamento");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPesquisarTodos)
-                .addGap(162, 162, 162))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblPesquisar)
                         .addGap(18, 18, 18)
                         .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar))
+                        .addComponent(btnPesquisar)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(btnPesquisarTodos))
+                        .addGap(162, 162, 162))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(btnEsquerda)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDireita))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel1)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPesquisar)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
                 .addComponent(btnPesquisarTodos)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDireita)
-                    .addComponent(btnEsquerda))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addGap(29, 29, 29))
         );
 
@@ -173,19 +215,64 @@ public class ListarProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarActionPerformed
 
     private void btnPesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTodosActionPerformed
-    //    criaTabela(JoaoAtacadao.produtos, 0);
+
+        ArrayList lista = new ArrayList();
         pagina = 0;
+        try {
+            lista = BancoDeDados.leitura("lucas.txt", pagina);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (lista != null)
+            criaTabela(lista);
     }//GEN-LAST:event_btnPesquisarTodosActionPerformed
 
-    private void btnDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireitaActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        ArrayList lista = null;
         pagina += 1;
-  //      criaTabela(JoaoAtacadao.produtos, pagina);
-    }//GEN-LAST:event_btnDireitaActionPerformed
+        try {
+            lista = BancoDeDados.leitura("lucas.txt", pagina);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (lista != null)
+            criaTabela(lista);
+        else
+            pagina -= 1;
+    }                                        
 
-    private void btnEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsquerdaActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        ArrayList lista = null;
+        if (pagina <= 0)
+            return;
         pagina -= 1;
-   //     criaTabela(JoaoAtacadao.produtos, pagina);
-    }//GEN-LAST:event_btnEsquerdaActionPerformed
+        try {
+            lista = BancoDeDados.leitura("lucas.txt", pagina);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (lista != null)
+            criaTabela(lista);
+        else
+            pagina += 1;
+    }                                        
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        String codigo = txtPesquisar.getText();
+        String[] lista = null;
+        try {
+            lista = BancoDeDados.pesquisa("lucas.txt", codigo);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ArrayList arraylist = new ArrayList();
+        arraylist.add(lista);
+        if (lista != null)
+            criaTabela(arraylist);
+            
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,11 +310,13 @@ public class ListarProdutos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDireita;
-    private javax.swing.JButton btnEsquerda;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnPesquisarTodos;
+    private javax.swing.JComboBox<String> cmbDepartamentos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPesquisar;
     private javax.swing.JTable tblProdutos;
