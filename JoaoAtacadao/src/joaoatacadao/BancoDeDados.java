@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,22 +21,23 @@ public class BancoDeDados {
     
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
-        for (int i = 0; i < 1000; i++){
+        for (int i = 0; i < 1000; i++) {
             bufferDeEscrita.append(dadoQueSeraEscrito);
         }
         bufferDeEscrita.close();
     }
     
-    public static String[] leitor(String arquivo, String codigo) throws FileNotFoundException {
+    public static String[] pesquisa(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
         entrada.useDelimiter(codigo);
+        entrada.next();
+        
+        entrada.useDelimiter("\n");
         entrada.next();
         
         if (!(entrada.hasNextLine()))
             return null;
         
-        entrada.useDelimiter("\n");
-        entrada.next();
         entrada.useDelimiter(";");
         
         String[] vetor = entrada.next().split(",");
@@ -45,5 +47,38 @@ public class BancoDeDados {
         
         entrada.close();
         return vetor;
-    }   
+    }
+    
+    public static ArrayList leitura(String arquivo, int pg) throws FileNotFoundException {
+        
+        Scanner entrada = new Scanner(new File(arquivo));
+        for (int i = 0; i < pg*10; i++) {
+            entrada.useDelimiter(";");
+            entrada.next();
+            entrada.useDelimiter("\n");
+            entrada.next();
+            if (!(entrada.hasNextLine()))
+                return null;
+        }
+        
+        ArrayList lista = new ArrayList();
+        
+        for (int j = 0; j < 10; j++){
+            entrada.useDelimiter(";");
+            String[] vetor = entrada.next().split(",");
+            for (int i = 0; i < vetor.length; i++) {
+                vetor[i] = (vetor[i].split(":"))[1];
+            }
+            lista.add(vetor);
+            
+            entrada.useDelimiter("\n");
+            entrada.next();
+            
+            if (!(entrada.hasNextLine()))
+                return lista;
+        }
+        
+        entrada.close();
+        return lista;
+    }
 }

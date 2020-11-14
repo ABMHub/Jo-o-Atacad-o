@@ -7,7 +7,8 @@
 package joaoatacadao;
 
 import java.io.IOException;
-import java.util.Arrays;
+import telas.GerenciaProdutos;
+import telas.NewJFrame;
 
 /**
  *
@@ -16,7 +17,8 @@ import java.util.Arrays;
 public class JoaoAtacadao {    
     
     public static void main(String[] args) throws IOException {
-        System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
+        new NewJFrame().setVisible(true);
+        //System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
     }
     
 }
