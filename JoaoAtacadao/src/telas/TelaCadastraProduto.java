@@ -5,6 +5,12 @@
  */
 package telas;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static joaoatacadao.BancoDeDados.escritor;
+
 /**
  *
  * @author lucas
@@ -14,9 +20,11 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    private String menu;
     public TelaCadastraProduto(String menu) {
         initComponents();
-        
+        this.menu = menu;
         ///Produto            
             jLabel1.setText("Nome");
             jLabel2.setText("Código");
@@ -54,14 +62,14 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
             jLabel8.setText("Duração");
             break;
             
-            case "periferico":
+            case "perifericos":
             jLabel5.setText("Cor");
             jLabel6.setText("Modelo");
             jLabel7.setText("Tipo");
             jLabel8.setText("Padrão de Entrada");
             break;
             
-            case "celular":
+            case "celulares":
             jLabel5.setText("Cor");
             jLabel6.setText("Modelo");
             jLabel7.setText("Tamanho");
@@ -70,7 +78,7 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
             jLabel10.setText("Câmera");
             break;
             
-            case "computador":
+            case "computadores":
             jLabel5.setText("Cor");
             jLabel6.setText("Modelo");
             jLabel7.setText("Processador");
@@ -80,13 +88,13 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
             jLabel11.setText("RGB");
             break;
             
-            case "eletroeletronico":
+            case "eletroeletronicos":
             jLabel5.setText("Consumo de Energia");
             jLabel6.setText("Potência");
             jLabel7.setText("Smart");
             break;
         
-            case "vesturario":
+            case "vestuario":
             jLabel5.setText("Tamanho");
             jLabel6.setText("Cor");
             jLabel7.setText("Material");
@@ -127,6 +135,8 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,17 +170,27 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
 
         jLabel12.setText("jLabel12");
 
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField6))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -190,7 +210,13 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSalvar)
+                            .addComponent(jTextField6))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -200,13 +226,15 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(btnVoltar))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -256,7 +284,11 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnVoltar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -265,6 +297,115 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String temp = "";
+        
+        temp = "Nome:" + jTextField1.getText();
+        temp += ",\nCódigo:" + jTextField2.getText();
+        temp += ",\nValor:" + jTextField3.getText();
+        temp += ",\nMarca:" + jTextField4.getText();
+        
+        switch(menu)
+        {
+            case "livros":     
+                temp += ",\nFaixa Etária:" + jTextField5.getText();
+                temp += ",\nTema:" + jTextField6.getText();
+                
+                temp +=  "Autor:" + jTextField7.getText();
+                temp += ",\nEditora:" + jTextField8.getText();
+                temp += ",\nQuantidade de páginas:" + jTextField9.getText();
+                temp += ",\nISBN:" + jTextField10.getText() + ";\n\n";
+
+            break;
+            
+            case "filmes":
+                
+                temp += ",\nFaixa Etária:" + jTextField5.getText();
+                temp += ",\nTema:" + jTextField6.getText();
+                
+                temp +=  "\nDiretor:" + jTextField7.getText();
+                temp += ",\nDuração:" + jTextField8.getText() + ";\n\n";
+
+            break;
+            
+            case "perifericos":
+                
+                temp += ",\nCor:" + jTextField5.getText();
+                temp += ",\nModelo:" + jTextField6.getText();
+                
+                temp += ",\nTipo:" + jTextField7.getText();
+                temp += ",\nPadrão de Entrada:" + jTextField8.getText();
+                temp += ",\nQuantidade de páginas:" + jTextField9.getText() + ";\n\n";
+
+            break;
+            
+            case "computadores":
+                temp += ",\nCor:" + jTextField5.getText();
+                temp += ",\nModelo:" + jTextField6.getText();
+                
+                temp += ",\nProcessador:" + jTextField7.getText();
+                temp += ",\nGPU:" + jTextField8.getText();
+                temp += ",\nFonte:" + jTextField9.getText();
+                temp += ",\nMemória:" + jTextField8.getText();
+                temp += ",\nRGB:" + jTextField8.getText() + ";\n\n";
+            break;
+                
+            case "celulares":
+                
+                temp += ",\nCor:" + jTextField5.getText();
+                temp += ",\nModelo:" + jTextField6.getText();
+                
+                temp += ",\nTamanho:" + jTextField7.getText();
+                temp += ",\nMemória:" + jTextField8.getText();
+                temp += ",\nProcessador:" + jTextField9.getText();
+                temp += ",\nCâmera:" + jTextField10.getText() + ";\n\n";
+            break;
+            
+            case "eletroeletronicos":
+                
+                temp += ",\nConsumo de energia:" + jTextField5.getText();
+                temp += ",\nPotência:" + jTextField6.getText();
+                temp += ",\nSmart:" + jTextField7.getText() + ";\n\n";
+            break;
+            
+            case "vestuario":
+                temp += ",\nTamanho:" + jTextField5.getText();
+                temp += ",\nCor:" + jTextField6.getText();
+                temp += ",\nMaterial:" + jTextField7.getText() + ";\n\n";
+            break;
+            
+            default:
+                temp = "chora";
+                break;
+        }
+        
+        try{
+            escritor("dados/" + menu + ".txt", temp);
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+            jTextField11.setText("");
+            
+        }catch (IOException ex) {
+            Logger.getLogger(TelaCadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,13 +424,13 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastraProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastraProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastraProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastraProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -302,6 +443,8 @@ public class TelaCadastraProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
