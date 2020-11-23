@@ -6,6 +6,8 @@
 package telas;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,10 +26,16 @@ public class ListarProdutos extends javax.swing.JFrame {
     
     public ListarProdutos() {
         initComponents();
-        carregaGerentes();
+        carregaDepartamentos();
+        
+        try {
+            BancoDeDados.criaArquivos();
+        } catch (IOException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void carregaGerentes () {
+    public void carregaDepartamentos () {
         cmbDepartamentos.removeAllItems();
         
         cmbDepartamentos.addItem("Selecione um Departamento");
@@ -39,6 +47,13 @@ public class ListarProdutos extends javax.swing.JFrame {
         cmbDepartamentos.addItem("Eletroeletrônicos");
         cmbDepartamentos.addItem("Vestuário");
         
+    }
+    
+    public void updateArquivo () {
+        if (cmbDepartamentos.getSelectedIndex() == 0) return;
+        arquivo = Normalizer.normalize(((String) cmbDepartamentos.getSelectedItem())
+                .toLowerCase(), Normalizer.Form.NFD)
+                .replaceAll("[^\\p{ASCII}]", "") + ".txt";
     }
     
     private void criaTabela(ArrayList<String[]> produtos) {
@@ -216,7 +231,7 @@ public class ListarProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarActionPerformed
 
     private void btnPesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTodosActionPerformed
-
+        updateArquivo();
         ArrayList lista = new ArrayList();
         pagina = 0;
         try {
@@ -260,6 +275,7 @@ public class ListarProdutos extends javax.swing.JFrame {
     }                                        
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        updateArquivo();
         String codigo = txtPesquisar.getText();
         String[] lista = null;
         try {

@@ -30,6 +30,17 @@ public class BancoDeDados {
         return vetorRetorno;
     }
     
+    public static void criaArquivos () throws IOException {
+        File arq;
+        String[] nomesArquivos = {"livros.txt", "filmes.txt", "perifericos.txt",
+            "celulares.txt", "computadores.txt", "eletroeletronicos.txt", "vestuario.txt", "lucas.txt"};
+        
+        for (int i = 0; i < nomesArquivos.length; i++) {
+            arq = new File(nomesArquivos[i]);
+            arq.createNewFile();
+        }
+    }
+    
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
         bufferDeEscrita.append(dadoQueSeraEscrito);
@@ -39,6 +50,10 @@ public class BancoDeDados {
     
     public static String[] pesquisa(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
+        
+        if (!(entrada.hasNextLine()))
+            return null;
+        
         entrada.useDelimiter(codigo);
         entrada.next();
         
@@ -65,8 +80,11 @@ public class BancoDeDados {
     }
     
     public static ArrayList leitura(String arquivo, int pg) throws FileNotFoundException {
-        
         Scanner entrada = new Scanner(new File(arquivo));
+        
+        if (!(entrada.hasNextLine()))
+                return new ArrayList();
+        
         for (int i = 0; i < pg*10; i++) {
             entrada.useDelimiter(";");
             entrada.next();
