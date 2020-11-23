@@ -1,18 +1,10 @@
-Nome:asdff,
-Código:fdas,
-Valor:wer,
-Marca:454,
-Faixa Etária:345,
-Tema:adfgeAutor:wt,
-Editora:ds,
-Quantidade de páginas:gda,
-ISBN:aaaaaa;
-Nome:Harry ,
-Código:POter,
-Valor:56,
-Marca:na testa,
-Faixa Etária:18,
-Tema:ErrAutor:J.K,
-Editora:Rocco,
-Quantidade de páginas:567,
-ISBN:YU67;
+codigo:1234,
+classe:livro,
+nome:lucas,
+idade:sla,
+autor:tolkien;
+codigo:2222,
+classe:livro,
+nome:lucas,
+idade:sla,
+autor:tolkien;
