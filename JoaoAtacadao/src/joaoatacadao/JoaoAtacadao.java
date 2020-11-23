@@ -6,6 +6,8 @@
 
 package joaoatacadao;
 
+import telas.CadastrarCliente;
+import telas.CadastrarFuncionario;
 import telas.CadastrarProduto;
 import telas.GerenciaProdutos;
 
@@ -19,7 +21,9 @@ public class JoaoAtacadao {
     public static void main(String[] args) {
         //new NewJFrame().setVisible(true);
         //new CadastrarProduto().setVisible(true); 
-        new GerenciaProdutos().setVisible(true);
+        //new GerenciaProdutos().setVisible(true);
+        //new CadastrarCliente().setVisible(true);
+        new CadastrarFuncionario().setVisible(true);
         //System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
     }
     
