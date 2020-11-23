@@ -40,7 +40,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         txtDataNascimento = new javax.swing.JTextField();
         txtCpf = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        bttCancelar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         lblSenhaGerente = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
         rdbSim = new javax.swing.JRadioButton();
@@ -74,12 +74,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
 
-        bttCancelar.setMnemonic('C');
-        bttCancelar.setText("Cancelar");
-        bttCancelar.setToolTipText("Cancela o cadastro");
-        bttCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setMnemonic('C');
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Cancela o cadastro");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bttCancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -109,7 +109,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttCancelar)
+                .addComponent(btnCancelar)
                 .addGap(83, 83, 83))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -164,7 +164,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(bttCancelar))
+                    .addComponent(btnCancelar))
                 .addContainerGap())
         );
 
@@ -187,9 +187,9 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bttCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_bttCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         if(rdbSim.isSelected())
@@ -245,10 +245,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.ButtonGroup btnGrupoGerente;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton bttCancelar;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblDataNascimento;

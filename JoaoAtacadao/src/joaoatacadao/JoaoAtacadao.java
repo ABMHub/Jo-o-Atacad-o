@@ -6,8 +6,11 @@
 
 package joaoatacadao;
 
+import telas.CadastrarCliente;
+import telas.CadastrarFuncionario;
 import telas.CadastrarProduto;
 import telas.GerenciaProdutos;
+import telas.ListarProdutos;
 
 /**
  *
@@ -19,7 +22,7 @@ public class JoaoAtacadao {
     public static void main(String[] args) {
         //new NewJFrame().setVisible(true);
         //new CadastrarProduto().setVisible(true); 
-        new GerenciaProdutos().setVisible(true);
+        new ListarProdutos().setVisible(true);
         //System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
     }
     

@@ -87,11 +87,11 @@ public class ListarProdutos extends javax.swing.JFrame {
         btnPesquisarTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btnEsquerda = new javax.swing.JButton();
+        btnDireita = new javax.swing.JButton();
+        lblPesquisaDeProdutos = new javax.swing.JLabel();
         cmbDepartamentos = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        lblDepartamento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -132,29 +132,29 @@ public class ListarProdutos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblProdutos);
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton1.setText("🡄");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEsquerda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnEsquerda.setText("🡄");
+        btnEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEsquerdaActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setText("🡆");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDireita.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnDireita.setText("🡆");
+        btnDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDireitaActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Pesquisa de Produtos");
+        lblPesquisaDeProdutos.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblPesquisaDeProdutos.setText("Pesquisa de Produtos");
 
         cmbDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Departamento");
+        lblDepartamento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDepartamento.setText("Departamento");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +172,7 @@ public class ListarProdutos extends javax.swing.JFrame {
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
+                            .addComponent(lblDepartamento)
                             .addComponent(btnPesquisarTodos))
                         .addGap(162, 162, 162))))
             .addGroup(layout.createSequentialGroup()
@@ -184,12 +184,12 @@ public class ListarProdutos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(147, 147, 147)
-                                .addComponent(jButton1)
+                                .addComponent(btnEsquerda)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
+                                .addComponent(btnDireita))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(76, 76, 76)
-                                .addComponent(jLabel1)))
+                                .addComponent(lblPesquisaDeProdutos)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -201,14 +201,14 @@ public class ListarProdutos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addComponent(lblPesquisaDeProdutos)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPesquisar)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblDepartamento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
@@ -217,8 +217,8 @@ public class ListarProdutos extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnDireita)
+                    .addComponent(btnEsquerda))
                 .addGap(29, 29, 29))
         );
 
@@ -244,7 +244,7 @@ public class ListarProdutos extends javax.swing.JFrame {
             criaTabela(lista);
     }//GEN-LAST:event_btnPesquisarTodosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void btnDireitaActionPerformed(java.awt.event.ActionEvent evt) {                                         
         ArrayList lista = null;
         pagina += 1;
         try {
@@ -258,7 +258,7 @@ public class ListarProdutos extends javax.swing.JFrame {
             pagina -= 1;
     }                                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void btnEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {                                         
         ArrayList lista = null;
         if (pagina <= 0)
             return;
@@ -327,14 +327,14 @@ public class ListarProdutos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDireita;
+    private javax.swing.JButton btnEsquerda;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnPesquisarTodos;
     private javax.swing.JComboBox<String> cmbDepartamentos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDepartamento;
+    private javax.swing.JLabel lblPesquisaDeProdutos;
     private javax.swing.JLabel lblPesquisar;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtPesquisar;

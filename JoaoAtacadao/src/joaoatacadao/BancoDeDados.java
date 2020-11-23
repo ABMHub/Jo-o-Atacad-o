@@ -114,4 +114,28 @@ public class BancoDeDados {
         entrada.close();
         return lista;
     }
+    
+    public static void remover(String arquivo, String codigo) throws FileNotFoundException {
+        Scanner entrada = new Scanner(new File(arquivo));
+        Scanner entrada
+        String texto = new String("");
+        
+        if (!(entrada.hasNextLine()))
+                return;
+        
+        do {
+            entrada.useDelimiter(";");
+            texto = texto + entrada.next();
+        }
+        
+        entrada.useDelimiter(codigo);
+        String primeiraMetade = entrada.next();
+        
+        if (!(entrada.hasNextLine()))
+            return;
+        
+        
+        
+        
+    }
 }
