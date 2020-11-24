@@ -1,8 +1,8 @@
-Código:6,
-Nome:6,
-Valor:6,
-Marca:6,
-Tamanho:6,
-Cor:6,
-Material:6;
+Nome:A,
+Código:A,
+Valor:A,
+Marca:A,
+Tamanho:4,
+Cor:4,
+Material:4;
 

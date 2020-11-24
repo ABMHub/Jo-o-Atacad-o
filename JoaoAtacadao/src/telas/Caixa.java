@@ -6,9 +6,8 @@
 package telas;
 
 import java.io.FileNotFoundException;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import static joaoatacadao.BancoDeDados.pesquisa;
 import joaoatacadao.ItemPedido;
 
@@ -18,6 +17,7 @@ import joaoatacadao.ItemPedido;
  */
 public class Caixa extends javax.swing.JFrame {
     ArrayList <ItemPedido> itens = new ArrayList<>();
+    ItemPedido item;
     /**
      * Creates new form Caixa
      */
@@ -123,6 +123,11 @@ public class Caixa extends javax.swing.JFrame {
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar1.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCaixaLayout = new javax.swing.GroupLayout(pnlCaixa);
         pnlCaixa.setLayout(pnlCaixaLayout);
@@ -248,16 +253,26 @@ public class Caixa extends javax.swing.JFrame {
         }
         
         try {
-            dados = pesquisa(arquivo, codigo);
+            dados = pesquisa("dados/" + arquivo, codigo);
         } catch (FileNotFoundException ex) {
             java.util.logging.Logger.getLogger(Caixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         if(dados != null){
-            ItemPedido item = new ItemPedido(dados);
-            itens.add(item);
+            item = new ItemPedido(dados);
+            //itens.add(item);
             txtQuantidade.setEditable(true);
-        }
+            txaDadosProduto.setText((item.getProduto()).toString());
+        }else
+            JOptionPane.showMessageDialog(null, "Produto não encontrado!", "Falha na Busca", JOptionPane.ERROR_MESSAGE);
+    
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        txtPesquisar.setText("");
+        txaDadosProduto.setText("");
+        txtQuantidade.setText("");
+        txtQuantidade.setEditable(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments

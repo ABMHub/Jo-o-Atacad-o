@@ -28,9 +28,7 @@ public abstract class Informatica extends Produto {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + ",\nCor: " + cor + ",\nModelo: " + modelo;
-    }
+    public abstract String toString();
     
     
 }

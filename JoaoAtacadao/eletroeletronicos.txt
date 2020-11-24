@@ -1,8 +1,0 @@
-codigo:1234,
-classe:eletroeletronicos,
-nome:lucas,
-preco:1;
-codigo:2222,
-classe:eletroeletronicos,
-nome:lucas,
-preco:1;

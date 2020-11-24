@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package joaoatacadao;
 
 import java.io.BufferedWriter;
@@ -12,13 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author lucas
- */
 public class BancoDeDados {
     
     public static String[] concatArray(String[] vetor, String[] vetor2) {
@@ -59,34 +48,38 @@ public class BancoDeDados {
     
     public static String[] pesquisa(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
-        
+
         if (!(entrada.hasNextLine()))
             return null;
-        
+
         entrada.useDelimiter(codigo);
         entrada.next();
-        
-        entrada.useDelimiter(",");
-        String[] codigoAux = {entrada.next()};
-        
-        entrada.useDelimiter("\n");
-        entrada.next();
-        
+
         if (!(entrada.hasNextLine()))
             return null;
-        
+
+        entrada.useDelimiter(",");
+        String[] codigoAux = {entrada.next()};
+
+        entrada.useDelimiter("\n");
+        entrada.next();
+
+        if (!(entrada.hasNextLine()))
+            return null;
+
         entrada.useDelimiter(";");
-        
+
         String[] vetor = entrada.next().split(",");
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = (vetor[i].split(":"))[1];
         }
-        
+
         String[] arrayRetorno = concatArray(codigoAux, vetor);
-        
+
         entrada.close();
         return arrayRetorno;
     }
+
     
     public static ArrayList leitura(String arquivo, int pg) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
@@ -123,68 +116,4 @@ public class BancoDeDados {
         entrada.close();
         return lista;
     }
-    
-    private static void alterar(String arquivo, String codigo, String dado, boolean remover) throws FileNotFoundException {
-        Scanner entrada = new Scanner(new File(arquivo));
-        String texto = new String("");
-        String codAnalise;
-        String stringAux;
-        
-        if (!(entrada.hasNextLine()))
-                return;
-        
-        do {                       
-            entrada.useDelimiter(",");
-            stringAux = entrada.next();
-            codAnalise = stringAux.split(":")[1];
-            
-            if (codAnalise.equals(codigo)) {
-                entrada.useDelimiter(";");
-                entrada.next();
-                
-                entrada.useDelimiter("\n");
-                entrada.next();
-                
-                if (!remover) {
-                    texto = texto + dado;
-                }
-                
-                while (entrada.hasNextLine()) {
-                    entrada.useDelimiter(";");
-                    texto = texto + entrada.next();
-                    
-                    entrada.useDelimiter("\n");
-                    texto = texto + entrada.next();
-                }
-            }
-            
-            else {
-                entrada.useDelimiter(";");
-                texto = texto + stringAux + entrada.next();
-                
-                entrada.useDelimiter("\n");
-                texto = texto + entrada.next();
-            }
-                        
-        } while(entrada.hasNextLine());
-        
-        
-        try {
-            reescritor(arquivo, texto.trim());
-        } catch (IOException ex) {
-            Logger.getLogger(BancoDeDados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if (!(entrada.hasNextLine()))
-            return;     
-    }
-    
-    public static void editar (String arquivo, String codigo, String dado) throws FileNotFoundException {
-        alterar(arquivo, codigo, dado, false);
-    }
-    
-    public static void remover (String arquivo, String codigo) throws FileNotFoundException {
-        alterar(arquivo, codigo, null, true);
-    }
-    
 }

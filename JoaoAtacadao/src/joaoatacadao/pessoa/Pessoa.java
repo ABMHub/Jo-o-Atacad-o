@@ -36,11 +36,9 @@ public abstract class Pessoa {
     public void setCpf(long cpf) {
         this.cpf = cpf;
     }
-
+    
     @Override
     public String toString() {
         return "Nome: " + nome + ",\nData de Nascimento: " + dataNascimento + ",\nCPF: " + cpf;
     }
- 
-    
 }

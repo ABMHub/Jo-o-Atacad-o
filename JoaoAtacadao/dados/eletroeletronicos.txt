@@ -1,8 +1,8 @@
-Código:6,
-Nome:6,
-Valor:6,
-Marca:6,
-Consumo de energia:6,
-Potência:6,
-Smart:6;
+Nome:2,
+Código:2,
+Valor:2,
+Marca:2,
+Consumo de energia:3,
+Potência:1,
+Smart:false;
 

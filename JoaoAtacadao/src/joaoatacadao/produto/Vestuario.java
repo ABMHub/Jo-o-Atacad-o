@@ -39,7 +39,8 @@ public class Vestuario extends Produto{
 
     @Override
     public String toString() {
-        return super.toString() + ",\nTamanho: " + tamanho + ",\nCor=" + cor + ",\nMaterial=" + material;
+        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca   
+        + ",\nTamanho: " + tamanho + ",\nCor=" + cor + ",\nMaterial=" + material;
     }
     
     

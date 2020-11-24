@@ -49,7 +49,9 @@ public class Celular extends Informatica{
 
     @Override
     public String toString() {
-        return super.toString() + ",\nTamanho da Tela: " + tamanhoDaTela + ",\nMemória: " +
+        return  "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
+                + ",\nCor: " + cor + ",\nModelo: " + modelo    
+                + ",\nTamanho da Tela: " + tamanhoDaTela + ",\nMemória: " +
                 memoria + ",\nProcessador: " + processador + ",\nCâmera: " + camera;
     }
     

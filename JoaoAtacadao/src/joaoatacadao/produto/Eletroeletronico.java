@@ -40,7 +40,8 @@ public class Eletroeletronico extends Produto {
     @Override
     public String toString() {
         String auxSmart = smart ? "É Smart" : "Não é Smart";
-        return super.toString() + ",\nConsumoDeEnergia: " + consumoDeEnergia + ",\nPotência: " + potencia + ",\nSmart: " + auxSmart;
+        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
+         + ",\nConsumoDeEnergia: " + consumoDeEnergia + ",\nPotência: " + potencia + ",\nSmart: " + auxSmart;
     }
     
     

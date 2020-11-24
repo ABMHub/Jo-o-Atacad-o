@@ -7,15 +7,16 @@ package telas;
 
 /**
  *
- * @author Joaop
+ * @author João Víctor
  */
 public class CadastrarProduto extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastrarProduto
+     * Creates new form CadastrarProduto1
      */
     public CadastrarProduto() {
         initComponents();
+        setResizable(false); // maximize button disable
     }
 
     /**
@@ -27,144 +28,187 @@ public class CadastrarProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnLivros = new javax.swing.JButton();
-        btnFilmes = new javax.swing.JButton();
-        btnPerifericos = new javax.swing.JButton();
-        bntCelulares = new javax.swing.JButton();
-        btnComputadores = new javax.swing.JButton();
-        btnEletroeletronicos = new javax.swing.JButton();
-        btnVestuario = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblTexto = new javax.swing.JLabel();
+        bttLivros = new javax.swing.JButton();
+        bttFilmes = new javax.swing.JButton();
+        bttPerifericos = new javax.swing.JButton();
+        bttCelulares = new javax.swing.JButton();
+        bttComputadores = new javax.swing.JButton();
+        bttEletroeletronicos = new javax.swing.JButton();
+        bttVestuario = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnLivros.setText("Livros");
-        btnLivros.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        lblTexto.setText("Selecione o tipo de produto que será cadastrado:");
+
+        bttLivros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/livro1.png"))); // NOI18N
+        bttLivros.setText("Livros");
+        bttLivros.setDoubleBuffered(true);
+        bttLivros.setFocusable(false);
+        bttLivros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttLivros.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLivrosActionPerformed(evt);
+                bttLivrosActionPerformed(evt);
             }
         });
 
-        btnFilmes.setText("Filmes");
-        btnFilmes.addActionListener(new java.awt.event.ActionListener() {
+        bttFilmes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/filme1.png"))); // NOI18N
+        bttFilmes.setText("Filmes");
+        bttFilmes.setFocusable(false);
+        bttFilmes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttFilmes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFilmesActionPerformed(evt);
+                bttFilmesActionPerformed(evt);
             }
         });
 
-        btnPerifericos.setText("Periféricos");
-        btnPerifericos.addActionListener(new java.awt.event.ActionListener() {
+        bttPerifericos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/periferico1.png"))); // NOI18N
+        bttPerifericos.setText("Periféricos");
+        bttPerifericos.setFocusable(false);
+        bttPerifericos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttPerifericos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttPerifericos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerifericosActionPerformed(evt);
+                bttPerifericosActionPerformed(evt);
             }
         });
 
-        bntCelulares.setText("Celulares");
-        bntCelulares.addActionListener(new java.awt.event.ActionListener() {
+        bttCelulares.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/celular1.png"))); // NOI18N
+        bttCelulares.setText("Celulares");
+        bttCelulares.setFocusable(false);
+        bttCelulares.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttCelulares.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttCelulares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntCelularesActionPerformed(evt);
+                bttCelularesActionPerformed(evt);
             }
         });
 
-        btnComputadores.setText("Computadores");
-        btnComputadores.addActionListener(new java.awt.event.ActionListener() {
+        bttComputadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/computador 1.png"))); // NOI18N
+        bttComputadores.setText("Computadores");
+        bttComputadores.setFocusable(false);
+        bttComputadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttComputadores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttComputadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComputadoresActionPerformed(evt);
+                bttComputadoresActionPerformed(evt);
             }
         });
 
-        btnEletroeletronicos.setText("Eletroeletrônicos");
-        btnEletroeletronicos.addActionListener(new java.awt.event.ActionListener() {
+        bttEletroeletronicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/eletroeletronicos1.png"))); // NOI18N
+        bttEletroeletronicos.setText("Eletroeletrônicos");
+        bttEletroeletronicos.setFocusable(false);
+        bttEletroeletronicos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttEletroeletronicos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttEletroeletronicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEletroeletronicosActionPerformed(evt);
+                bttEletroeletronicosActionPerformed(evt);
             }
         });
 
-        btnVestuario.setText("Vestuário");
-        btnVestuario.addActionListener(new java.awt.event.ActionListener() {
+        bttVestuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/vestuario1.png"))); // NOI18N
+        bttVestuario.setText("Vestuário");
+        bttVestuario.setFocusable(false);
+        bttVestuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bttVestuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bttVestuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVestuarioActionPerformed(evt);
+                bttVestuarioActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(bttComputadores)
+                .addGap(18, 18, 18)
+                .addComponent(bttEletroeletronicos)
+                .addGap(18, 18, 18)
+                .addComponent(bttVestuario, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(bttLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTexto)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bttFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(bttPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(bttCelulares, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(41, 41, 41))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTexto)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bttFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bttCelulares, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bttEletroeletronicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttComputadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttVestuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(btnLivros)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnFilmes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPerifericos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bntCelulares)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnComputadores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEletroeletronicos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVestuario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLivros)
-                    .addComponent(btnFilmes)
-                    .addComponent(btnPerifericos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bntCelulares)
-                    .addComponent(btnComputadores)
-                    .addComponent(btnEletroeletronicos)
-                    .addComponent(btnVestuario))
-                .addGap(122, 122, 122))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilmesActionPerformed
-        new TelaCadastraProduto("filmes").setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnFilmesActionPerformed
+    private void bttLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLivrosActionPerformed
+        new TelaCadastrarProduto("livros").setVisible(true);
+    }//GEN-LAST:event_bttLivrosActionPerformed
 
-    private void btnLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLivrosActionPerformed
-        new TelaCadastraProduto("livros").setVisible(true);
-        //this.setVisible(false);
-        
-    }//GEN-LAST:event_btnLivrosActionPerformed
+    private void bttFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttFilmesActionPerformed
+        new TelaCadastrarProduto("filmes").setVisible(true);
+    }//GEN-LAST:event_bttFilmesActionPerformed
 
-    private void btnPerifericosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerifericosActionPerformed
-        new TelaCadastraProduto("perifericos").setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnPerifericosActionPerformed
+    private void bttPerifericosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttPerifericosActionPerformed
+        new TelaCadastrarProduto("perifericos").setVisible(true);
+    }//GEN-LAST:event_bttPerifericosActionPerformed
 
-    private void bntCelularesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCelularesActionPerformed
-        new TelaCadastraProduto("celulares").setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_bntCelularesActionPerformed
+    private void bttCelularesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttCelularesActionPerformed
+        new TelaCadastrarProduto("celulares").setVisible(true);
+    }//GEN-LAST:event_bttCelularesActionPerformed
 
-    private void btnComputadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComputadoresActionPerformed
-        new TelaCadastraProduto("computadores").setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnComputadoresActionPerformed
+    private void bttComputadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttComputadoresActionPerformed
+        new TelaCadastrarProduto("computadores").setVisible(true);
+    }//GEN-LAST:event_bttComputadoresActionPerformed
 
-    private void btnEletroeletronicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEletroeletronicosActionPerformed
-        new TelaCadastraProduto("eletroeletronicos").setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnEletroeletronicosActionPerformed
+    private void bttEletroeletronicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttEletroeletronicosActionPerformed
+        new TelaCadastrarProduto("eletroeletronicos").setVisible(true);
+    }//GEN-LAST:event_bttEletroeletronicosActionPerformed
 
-    private void btnVestuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVestuarioActionPerformed
-        new TelaCadastraProduto("vestuario").setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnVestuarioActionPerformed
+    private void bttVestuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVestuarioActionPerformed
+        new TelaCadastrarProduto("vestuario").setVisible(true);
+    }//GEN-LAST:event_bttVestuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +236,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CadastrarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -202,12 +247,14 @@ public class CadastrarProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntCelulares;
-    private javax.swing.JButton btnComputadores;
-    private javax.swing.JButton btnEletroeletronicos;
-    private javax.swing.JButton btnFilmes;
-    private javax.swing.JButton btnLivros;
-    private javax.swing.JButton btnPerifericos;
-    private javax.swing.JButton btnVestuario;
+    private javax.swing.JButton bttCelulares;
+    private javax.swing.JButton bttComputadores;
+    private javax.swing.JButton bttEletroeletronicos;
+    private javax.swing.JButton bttFilmes;
+    private javax.swing.JButton bttLivros;
+    private javax.swing.JButton bttPerifericos;
+    private javax.swing.JButton bttVestuario;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblTexto;
     // End of variables declaration//GEN-END:variables
 }

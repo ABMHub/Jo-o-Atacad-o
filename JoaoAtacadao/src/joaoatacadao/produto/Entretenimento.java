@@ -2,8 +2,8 @@
 package joaoatacadao.produto;
 
 public abstract class Entretenimento extends Produto{
-    private String faixaEtaria;
-    private String tema;
+    protected String faixaEtaria;
+    protected String tema;
 
     public Entretenimento(String faixaEtaria, String tema, String nome, String codigoDeBarras, float valor, String marca) {
         super(nome, codigoDeBarras, valor, marca);
@@ -28,9 +28,7 @@ public abstract class Entretenimento extends Produto{
     }
 
     @Override
-    public String toString() {
-        return super.toString() + ",\nFaixa Etária: " + faixaEtaria + ",\nTema: " + tema;
-    }
+    public abstract String toString();
     
     
 }

@@ -1,7 +1,7 @@
 
 package joaoatacadao.produto;
 
-public class Produto {
+public abstract class Produto {
     protected String nome;
     protected String codigoDeBarras;
     protected float valor;
@@ -47,9 +47,7 @@ public class Produto {
     }
 
     @Override
-    public String toString() {
-        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca;
-    }
+    public abstract String toString();
     
     
 }

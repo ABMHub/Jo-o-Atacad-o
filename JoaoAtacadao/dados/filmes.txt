@@ -1,9 +1,0 @@
-Nome:qewr,
-Código:rewq,
-Valor:qwer,
-Marca:dsa,
-Faixa Etária:sdf,
-Tema:sss
-Diretor:dff,
-Duração:re4;
-

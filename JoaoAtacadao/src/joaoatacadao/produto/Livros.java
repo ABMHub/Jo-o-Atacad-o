@@ -49,7 +49,9 @@ public class Livros extends Entretenimento {
 
     @Override
     public String toString() {
-        return super.toString() + ",\nAutor: " + autor + ",\nEditora: " + editora +
+        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
+                + ",\nFaixa Etária: " + faixaEtaria + ",\nTema: " + tema
+                + ",\nAutor: " + autor + ",\nEditora: " + editora +
                 ",\nQuantidade de Páginas: " + qtdPaginas + ",\nISBN: " + ISBN;
     }
     

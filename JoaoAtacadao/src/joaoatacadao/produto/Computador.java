@@ -60,8 +60,10 @@ public class Computador extends Informatica {
     @Override
     public String toString() {
         String auxRgb = rgb ? "Tem RGB" : "Não tem RGB";
-        return super.toString() + ",\nProcessador: " + processador + ",\nGPU: " + gpu +
-                ",\nMemória=" + memoria + ",\nFonte: " + fonte + ",\nRGB: " + auxRgb;
+        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
+            + ",\nCor: " + cor + ",\nModelo: " + modelo    
+            + ",\nProcessador: " + processador + ",\nGPU: " + gpu +
+            ",\nMemória=" + memoria + ",\nFonte: " + fonte + ",\nRGB: " + auxRgb;
     }
     
     

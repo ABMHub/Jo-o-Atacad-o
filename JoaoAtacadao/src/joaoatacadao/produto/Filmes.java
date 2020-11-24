@@ -29,7 +29,9 @@ public class Filmes extends Entretenimento {
 
     @Override
     public String toString() {
-        return super.toString() + ",\nDiretor: " + diretor + ",\nDuração: " + duracao;
+        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
+                + ",\nFaixa Etária: " + faixaEtaria + ",\nTema: " + tema
+                + ",\nDiretor: " + diretor + ",\nDuração: " + duracao;
     }   
     
     

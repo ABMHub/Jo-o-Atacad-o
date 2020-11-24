@@ -29,7 +29,9 @@ public class Periferico extends Informatica {
 
     @Override
     public String toString() {
-        return super.toString() + ",\nTipo: " + tipo + ",\nPadrão de Entrada: " + padraoDeEntrada;
+        return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
+                + ",\nCor: " + cor + ",\nModelo: " + modelo
+                + ",\nTipo: " + tipo + ",\nPadrão de Entrada: " + padraoDeEntrada;
     }
     
     

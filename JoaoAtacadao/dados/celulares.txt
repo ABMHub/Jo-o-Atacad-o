@@ -1,11 +1,11 @@
-Código:A-09009,
-Nome:Celular,
-Valor:4,
-Marca:4,
-Cor:4,
-Modelo:4,
-Tamanho:4,
-Memória:44,
-Processador:4,
-Câmera:4;
+Nome:A,
+Código:A,
+Valor:A,
+Marca:A,
+Cor:A,
+Modelo:A,
+TamanhoTela:A,
+Memória:A,
+Processador:A,
+Câmera:A;
 

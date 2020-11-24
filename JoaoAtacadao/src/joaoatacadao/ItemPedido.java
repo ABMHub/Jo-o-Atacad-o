@@ -65,6 +65,18 @@ public class ItemPedido {
         }
     }
 
+    public float getSubtotal() {
+        return subtotal;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+    
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
         subtotal = (float)quantidade * produto.getValor();
