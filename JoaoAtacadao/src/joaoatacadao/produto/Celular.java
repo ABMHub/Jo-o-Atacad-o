@@ -46,4 +46,12 @@ public class Celular extends Informatica{
     public void setCamera(String camera) {
         this.camera = camera;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nTamanho da Tela: " + tamanhoDaTela + ",\nMemória: " +
+                memoria + ",\nProcessador: " + processador + ",\nCâmera: " + camera;
+    }
+    
+    
 }

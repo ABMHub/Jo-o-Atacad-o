@@ -12,6 +12,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,6 +46,13 @@ public class BancoDeDados {
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
         bufferDeEscrita.append(dadoQueSeraEscrito);
+        
+        bufferDeEscrita.close();
+    }
+    
+    public static void reescritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
+        BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo));
+        bufferDeEscrita.write(dadoQueSeraEscrito);
         
         bufferDeEscrita.close();
     }
@@ -115,27 +124,67 @@ public class BancoDeDados {
         return lista;
     }
     
-    /*public static void remover(String arquivo, String codigo) throws FileNotFoundException {
+    private static void alterar(String arquivo, String codigo, String dado, boolean remover) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
-        Scanner entrada
         String texto = new String("");
+        String codAnalise;
+        String stringAux;
         
         if (!(entrada.hasNextLine()))
                 return;
         
-        do {
-            entrada.useDelimiter(";");
-            texto = texto + entrada.next();
+        do {                       
+            entrada.useDelimiter(",");
+            stringAux = entrada.next();
+            codAnalise = stringAux.split(":")[1];
+            
+            if (codAnalise.equals(codigo)) {
+                entrada.useDelimiter(";");
+                entrada.next();
+                
+                entrada.useDelimiter("\n");
+                entrada.next();
+                
+                if (!remover) {
+                    texto = texto + dado;
+                }
+                
+                while (entrada.hasNextLine()) {
+                    entrada.useDelimiter(";");
+                    texto = texto + entrada.next();
+                    
+                    entrada.useDelimiter("\n");
+                    texto = texto + entrada.next();
+                }
+            }
+            
+            else {
+                entrada.useDelimiter(";");
+                texto = texto + stringAux + entrada.next();
+                
+                entrada.useDelimiter("\n");
+                texto = texto + entrada.next();
+            }
+                        
+        } while(entrada.hasNextLine());
+        
+        
+        try {
+            reescritor(arquivo, texto.trim());
+        } catch (IOException ex) {
+            Logger.getLogger(BancoDeDados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        entrada.useDelimiter(codigo);
-        String primeiraMetade = entrada.next();
-        
         if (!(entrada.hasNextLine()))
-            return;
-        
-        
-        
-        
-    }*/
+            return;     
+    }
+    
+    public static void editar (String arquivo, String codigo, String dado) throws FileNotFoundException {
+        alterar(arquivo, codigo, dado, false);
+    }
+    
+    public static void remover (String arquivo, String codigo) throws FileNotFoundException {
+        alterar(arquivo, codigo, null, true);
+    }
+    
 }

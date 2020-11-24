@@ -26,4 +26,11 @@ public abstract class Entretenimento extends Produto{
     public void setTema(String tema) {
         this.tema = tema;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nFaixa Etária: " + faixaEtaria + ",\nTema: " + tema;
+    }
+    
+    
 }

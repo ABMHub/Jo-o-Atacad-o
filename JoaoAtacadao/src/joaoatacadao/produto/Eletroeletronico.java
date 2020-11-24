@@ -36,4 +36,12 @@ public class Eletroeletronico extends Produto {
     public void setSmart(boolean smart) {
         this.smart = smart;
     }
+
+    @Override
+    public String toString() {
+        String auxSmart = smart ? "É Smart" : "Não é Smart";
+        return super.toString() + ",\nConsumoDeEnergia: " + consumoDeEnergia + ",\nPotência: " + potencia + ",\nSmart: " + auxSmart;
+    }
+    
+    
 }
