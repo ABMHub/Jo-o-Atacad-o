@@ -7,6 +7,8 @@ package telas;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import joaoatacadao.BancoDeDados;
@@ -341,7 +343,7 @@ public class Caixa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private Cliente instanciarCliente (String[] dados) {
-        return new Cliente(dados[0], dados[1], Long.parseLong(dados[2]), Float.parseFloat(dados[3]), dados[4]);
+        return new Cliente(dados[1], dados[2], Long.parseLong(dados[0]), Float.parseFloat(dados[4]), dados[3]);
     }
     
     //private cvtBanco (Cliente c) {
@@ -365,17 +367,40 @@ public class Caixa extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Caixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         if (dados == null) {
+            JOptionPane.showMessageDialog(null, "CPF não encontrado", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
         Cliente c = instanciarCliente(dados);
         
-        if (!senha.equals(c.getSenhaCartaoFidelidade()) && c.getSaldoEmConta() > total) {
-            c.setSaldoEmConta(c.getSaldoEmConta() - total);
+        if (senha.equals(c.getSenhaCartaoFidelidade())) {
+            if (c.getSaldoEmConta() >= total) {
+                dados[4] = Float.toString((float) c.getSaldoEmConta() - total); 
+                String dado = "CPF:" + dados[0] + ",\nNome:" + dados[1]
+                    + ",\nData de Nascimento:" + dados[2] + ",\nSenha:" + dados[3]
+                    + ",\nSaldo:" + dados[4] + ";";
 
+                System.out.println(dados[4]);
+                System.out.println(total);
+
+                try {
+                    BancoDeDados.editar("dados/cadastrarCliente.txt", Long.toString(c.getCpf()), dado);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Você não tem saldo suficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }                 
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null, "Senha incorreta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
         }
 
         
-        //BancoDeDados.editar("cliente.txt", cpf, cvtBanco(c));
     }//GEN-LAST:event_btnPagarActionPerformed
 
 /*

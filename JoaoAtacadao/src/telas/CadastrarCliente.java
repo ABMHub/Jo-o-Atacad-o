@@ -228,7 +228,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             temp += ",\nNome:" + txtNome.getText();
             temp += ",\nData de nascimento:" + txtDataNascimento.getText();
             temp += ",\nSenha:" + senha;
-            temp += ",\nLimite:" + txtLimiteCartao.getText() + ";\n\n";
+            temp += ",\nSaldo:" + txtLimiteCartao.getText() + ";\n\n";
 
             try
             {

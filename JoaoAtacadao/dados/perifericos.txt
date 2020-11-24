@@ -1,0 +1,8 @@
+Código:e-1,
+Nome:MouseGamer,
+Valor:5,
+Marca:HyperX,
+Cor:vermelho,
+Modelo:dos bons,
+Tipo:gamer,
+Padrão de Entrada:usbc;
