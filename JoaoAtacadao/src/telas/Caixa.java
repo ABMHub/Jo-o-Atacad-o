@@ -359,7 +359,7 @@ public class Caixa extends javax.swing.JFrame {
         String[] dados = null;
         
         try {
-            dados = BancoDeDados.pesquisa("cliente.txt", cpf);
+            dados = BancoDeDados.pesquisa("dados/cadastrarCliente.txt", cpf);
             
         } catch (FileNotFoundException ex) {
             java.util.logging.Logger.getLogger(Caixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

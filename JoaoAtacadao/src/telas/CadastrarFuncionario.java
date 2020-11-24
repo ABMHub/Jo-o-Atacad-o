@@ -245,6 +245,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                     
             }catch (IOException ex) 
             {
+                System.out.println("a");
                 Logger.getLogger(TelaCadastrarProduto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

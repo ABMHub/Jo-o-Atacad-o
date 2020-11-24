@@ -26,15 +26,17 @@ public class BancoDeDados {
     public static void criaArquivos () throws IOException {
         File arq;
         String[] nomesArquivos = {"livros.txt", "filmes.txt", "perifericos.txt",
-            "celulares.txt", "computadores.txt", "eletroeletronicos.txt", "vestuario.txt", "lucas.txt"};
+            "celulares.txt", "computadores.txt", "eletroeletronicos.txt", "vestuario.txt",
+            "cadastrarCliente.txt", "cadastrarFuncionario.txt"};
         
         for (int i = 0; i < nomesArquivos.length; i++) {
-            arq = new File(nomesArquivos[i]);
+            arq = new File("dados/" + nomesArquivos[i]);
             arq.createNewFile();
         }
     }
     
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
+        criaArquivos();
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
         bufferDeEscrita.append(dadoQueSeraEscrito.trim());
         
