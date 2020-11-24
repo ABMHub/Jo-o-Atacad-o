@@ -27,6 +27,7 @@ public class ListarProdutos extends javax.swing.JFrame {
     public ListarProdutos() {
         initComponents();
         carregaDepartamentos();
+        setResizable(false); // maximize button disable
         
         try {
             BancoDeDados.criaArquivos();
@@ -81,19 +82,26 @@ public class ListarProdutos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtPesquisar = new javax.swing.JTextField();
+        pnlListarProdutos = new javax.swing.JPanel();
+        lblPesquisaDeProdutos = new javax.swing.JLabel();
         lblPesquisar = new javax.swing.JLabel();
+        txtPesquisar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
+        lblDepartamento = new javax.swing.JLabel();
+        cmbDepartamentos = new javax.swing.JComboBox<>();
         btnPesquisarTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        btnEsquerda = new javax.swing.JButton();
         btnDireita = new javax.swing.JButton();
-        lblPesquisaDeProdutos = new javax.swing.JLabel();
-        cmbDepartamentos = new javax.swing.JComboBox<>();
-        lblDepartamento = new javax.swing.JLabel();
+        btnEsquerda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        lblPesquisaDeProdutos.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblPesquisaDeProdutos.setText("Pesquisa de Produtos");
+
+        lblPesquisar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPesquisar.setText("Código");
 
         txtPesquisar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,15 +110,17 @@ public class ListarProdutos extends javax.swing.JFrame {
             }
         });
 
-        lblPesquisar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblPesquisar.setText("Código");
-
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
             }
         });
+
+        lblDepartamento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDepartamento.setText("Departamento");
+
+        cmbDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnPesquisarTodos.setText("Listar Todos");
         btnPesquisarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -132,14 +142,6 @@ public class ListarProdutos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblProdutos);
 
-        btnEsquerda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnEsquerda.setText("🡄");
-        btnEsquerda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEsquerdaActionPerformed(evt);
-            }
-        });
-
         btnDireita.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnDireita.setText("🡆");
         btnDireita.addActionListener(new java.awt.event.ActionListener() {
@@ -148,78 +150,94 @@ public class ListarProdutos extends javax.swing.JFrame {
             }
         });
 
-        lblPesquisaDeProdutos.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        lblPesquisaDeProdutos.setText("Pesquisa de Produtos");
+        btnEsquerda.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnEsquerda.setText("🡄");
+        btnEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsquerdaActionPerformed(evt);
+            }
+        });
 
-        cmbDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lblDepartamento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblDepartamento.setText("Departamento");
+        javax.swing.GroupLayout pnlListarProdutosLayout = new javax.swing.GroupLayout(pnlListarProdutos);
+        pnlListarProdutos.setLayout(pnlListarProdutosLayout);
+        pnlListarProdutosLayout.setHorizontalGroup(
+            pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                        .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addComponent(lblPesquisaDeProdutos))
+                            .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(lblPesquisar)
+                                .addGap(26, 26, 26)
+                                .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnPesquisar))
+                                    .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblDepartamento)
+                                            .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                                                .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(9, 9, 9))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListarProdutosLayout.createSequentialGroup()
+                                        .addComponent(btnPesquisarTodos)
+                                        .addGap(137, 137, 137)))))
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListarProdutosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEsquerda)
+                .addGap(40, 40, 40)
+                .addComponent(btnDireita)
+                .addGap(130, 130, 130))
+        );
+        pnlListarProdutosLayout.setVerticalGroup(
+            pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(lblPesquisaDeProdutos)
+                .addGap(29, 29, 29)
+                .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPesquisar)
+                    .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPesquisar)))
+                .addGap(18, 18, 18)
+                .addComponent(lblDepartamento)
+                .addGap(18, 18, 18)
+                .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlListarProdutosLayout.createSequentialGroup()
+                        .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisarTodos)
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListarProdutosLayout.createSequentialGroup()
+                        .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEsquerda)
+                            .addComponent(btnDireita))
+                        .addContainerGap())))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblPesquisar)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDepartamento)
-                            .addComponent(btnPesquisarTodos))
-                        .addGap(162, 162, 162))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addComponent(btnEsquerda)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDireita))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(lblPesquisaDeProdutos)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnlListarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblPesquisaDeProdutos)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPesquisar)
-                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(lblDepartamento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(btnPesquisarTodos)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDireita)
-                    .addComponent(btnEsquerda))
-                .addGap(29, 29, 29))
+            .addComponent(pnlListarProdutos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -232,7 +250,7 @@ public class ListarProdutos extends javax.swing.JFrame {
 
     private void btnPesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTodosActionPerformed
         updateArquivo();
-        ArrayList lista = new ArrayList();
+        ArrayList lista = new ArrayList<>();
         pagina = 0;
         try {
             lista = BancoDeDados.leitura(arquivo, pagina);
@@ -284,7 +302,7 @@ public class ListarProdutos extends javax.swing.JFrame {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        ArrayList arraylist = new ArrayList();
+        ArrayList arraylist = new ArrayList<>();
         arraylist.add(lista);
         if (lista != null)
             criaTabela(arraylist);
@@ -336,6 +354,7 @@ public class ListarProdutos extends javax.swing.JFrame {
     private javax.swing.JLabel lblDepartamento;
     private javax.swing.JLabel lblPesquisaDeProdutos;
     private javax.swing.JLabel lblPesquisar;
+    private javax.swing.JPanel pnlListarProdutos;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
