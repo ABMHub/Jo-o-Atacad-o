@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import joaoatacadao.BancoDeDados;
 import static joaoatacadao.BancoDeDados.pesquisa;
 import joaoatacadao.ItemPedido;
 import joaoatacadao.pessoa.Cliente;
@@ -238,6 +239,8 @@ public class Caixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        
+        
         String codigo = txtPesquisar.getText();
         String arquivo;
         String [] dados = null;
@@ -315,9 +318,9 @@ public class Caixa extends javax.swing.JFrame {
         tblProdutos.setModel(modelo);
     }
     
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
         resetBtn();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }                                           
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String qtd = txtQuantidade.getText();
@@ -328,9 +331,10 @@ public class Caixa extends javax.swing.JFrame {
         itens.add(item);        
         criaTabela(itens);
     }//GEN-LAST:event_btnAdicionarActionPerformed
+                                          
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-         if (tblProdutos.getSelectedRow() >= 0) {
+        if (tblProdutos.getSelectedRow() >= 0) {
             itens.remove(tblProdutos.getSelectedRow());            
         }
         criaTabela(itens);
@@ -340,8 +344,12 @@ public class Caixa extends javax.swing.JFrame {
         return new Cliente(dados[0], dados[1], Long.parseLong(dados[2]), Float.parseFloat(dados[3]), dados[4]);
     }
     
+    //private cvtBanco (Cliente c) {
+        
+    //}
+    
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        /*ring cpf = JOptionPane.showInputDialog("Insira seu CPF");
+        String cpf = JOptionPane.showInputDialog("Insira seu CPF");
         String senha = JOptionPane.showInputDialog("Insira a senha do seu cartão fidelidade");
         float total = 0;
         for (int i = 0 ; i < itens.size(); i++) {
@@ -363,11 +371,18 @@ public class Caixa extends javax.swing.JFrame {
         
         if (!senha.equals(c.getSenhaCartaoFidelidade()) && c.getSaldoEmConta() > total) {
             c.setSaldoEmConta(c.getSaldoEmConta() - total);
-        }*/
+
+        }
+
         
         //BancoDeDados.editar("cliente.txt", cpf, cvtBanco(c));
     }//GEN-LAST:event_btnPagarActionPerformed
 
+/*
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        resetBtn();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+*/
     /**
      * @param args the command line arguments
      */

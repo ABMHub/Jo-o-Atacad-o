@@ -6,7 +6,7 @@ public class Cliente extends Pessoa {
     private double saldoEmConta;
     private String senhaCartaoFidelidade;
 
-    public Cliente(String nome, Date dataNascimento, long cpf, 
+    public Cliente(String nome, String dataNascimento, long cpf, 
                    double saldoEmConta, String senhaCartaoFidelidade) {
         super(nome, dataNascimento, cpf);
         this.saldoEmConta = saldoEmConta;

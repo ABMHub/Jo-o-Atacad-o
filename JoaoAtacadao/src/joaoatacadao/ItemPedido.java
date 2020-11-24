@@ -81,5 +81,4 @@ public class ItemPedido {
         this.quantidade = quantidade;
         subtotal = (float)quantidade * produto.getValor();
     }
-    
 }

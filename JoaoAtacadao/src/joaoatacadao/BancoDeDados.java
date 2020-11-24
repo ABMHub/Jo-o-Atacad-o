@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BancoDeDados {
     
@@ -49,23 +51,32 @@ public class BancoDeDados {
     public static String[] pesquisa(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
 
-        if (!(entrada.hasNextLine()))
+        
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
             return null;
-
+        }
+            
+        
         entrada.useDelimiter(codigo);
         entrada.next();
-
-        if (!(entrada.hasNextLine()))
+        
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
             return null;
-
+        }
+        
         entrada.useDelimiter(",");
         String[] codigoAux = {entrada.next()};
 
         entrada.useDelimiter("\n");
         entrada.next();
 
-        if (!(entrada.hasNextLine()))
+        
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
             return null;
+        }
 
         entrada.useDelimiter(";");
 
@@ -84,8 +95,10 @@ public class BancoDeDados {
     public static ArrayList leitura(String arquivo, int pg) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
         
-        if (!(entrada.hasNextLine()))
-                return new ArrayList();
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
+            return null;
+        }
         
         for (int i = 0; i < pg*10; i++) {
             entrada.useDelimiter(";");
@@ -109,11 +122,77 @@ public class BancoDeDados {
             entrada.useDelimiter("\n");
             entrada.next();
             
-            if (!(entrada.hasNextLine()))
-                return lista;
+            if (!(entrada.hasNextLine())) {
+                entrada.close();
+                return null;
+            }   
         }
         
         entrada.close();
         return lista;
+    }
+    
+    private static void alterar(String arquivo, String codigo, String dado, boolean remover) throws FileNotFoundException {
+        Scanner entrada = new Scanner(new File(arquivo));
+        String texto = new String("");
+        String codAnalise;
+        String stringAux;
+        
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
+            return;
+        }
+        
+        do {                       
+            entrada.useDelimiter(",");
+            stringAux = entrada.next();
+            codAnalise = stringAux.split(":")[1];
+            
+            if (codAnalise.equals(codigo)) {
+                entrada.useDelimiter(";");
+                entrada.next();
+                
+                entrada.useDelimiter("\n");
+                entrada.next();
+                
+                if (!remover) {
+                    texto = texto + dado;
+                }
+                
+                while (entrada.hasNextLine()) {
+                    entrada.useDelimiter(";");
+                    texto = texto + entrada.next();
+                    
+                    entrada.useDelimiter("\n");
+                    texto = texto + entrada.next();
+                }
+            }
+            
+            else {
+                entrada.useDelimiter(";");
+                texto = texto + stringAux + entrada.next();
+                
+                entrada.useDelimiter("\n");
+                texto = texto + entrada.next();
+            }
+                        
+        } while(entrada.hasNextLine());
+        
+        
+        try {
+            reescritor(arquivo, texto.trim());
+        } catch (IOException ex) {
+            Logger.getLogger(BancoDeDados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        entrada.close();
+    }
+    
+    public static void editar (String arquivo, String codigo, String dado) throws FileNotFoundException {
+        alterar(arquivo, codigo, dado, false);
+    }
+    
+    public static void remover (String arquivo, String codigo) throws FileNotFoundException {
+        alterar(arquivo, codigo, null, true);
     }
 }
