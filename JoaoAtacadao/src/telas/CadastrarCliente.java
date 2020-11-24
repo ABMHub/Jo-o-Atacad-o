@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Classe responsável por efetuar o cadastro de um cliente no banco de dados adequado.
  */
 package telas;
 
@@ -214,6 +212,10 @@ public class CadastrarCliente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /*
+    Após a verificação de que todos os campos foram devidamente preenchidos, os dados são salvos
+    no banco de dados e em seguida os campos são esvaziados.
+    */
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String senha = new String(pswSenhaCartao.getPassword()).trim();
         
