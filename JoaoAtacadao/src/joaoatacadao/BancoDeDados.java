@@ -115,7 +115,7 @@ public class BancoDeDados {
         return lista;
     }
     
-    public static void remover(String arquivo, String codigo) throws FileNotFoundException {
+    /*public static void remover(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
         Scanner entrada
         String texto = new String("");
@@ -137,5 +137,5 @@ public class BancoDeDados {
         
         
         
-    }
+    }*/
 }
