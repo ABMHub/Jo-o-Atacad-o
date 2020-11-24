@@ -350,8 +350,8 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String temp = "";
         
-        temp = "Nome:" + jTextField1.getText();
-        temp += ",\nCódigo:" + jTextField2.getText();
+        temp  = "Código:" + jTextField2.getText();
+        temp += ",\nNome:" + jTextField1.getText();        
         temp += ",\nValor:" + jTextField3.getText();
         temp += ",\nMarca:" + jTextField4.getText();
         

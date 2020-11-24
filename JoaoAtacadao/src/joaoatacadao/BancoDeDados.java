@@ -36,7 +36,7 @@ public class BancoDeDados {
     
     public static void escritor(String arquivo, String dadoQueSeraEscrito) throws IOException { 
         BufferedWriter bufferDeEscrita = new BufferedWriter(new FileWriter(arquivo, true));
-        bufferDeEscrita.append(dadoQueSeraEscrito);
+        bufferDeEscrita.append(dadoQueSeraEscrito.trim());
         
         bufferDeEscrita.close();
     }
@@ -116,6 +116,7 @@ public class BancoDeDados {
             String[] vetor = entrada.next().split(",");
             for (int i = 0; i < vetor.length; i++) {
                 vetor[i] = (vetor[i].split(":"))[1];
+                System.out.println(vetor[i]);
             }
             lista.add(vetor);
             
@@ -124,8 +125,9 @@ public class BancoDeDados {
             
             if (!(entrada.hasNextLine())) {
                 entrada.close();
-                return null;
+                return lista;
             }   
+            System.out.println("a");
         }
         
         entrada.close();

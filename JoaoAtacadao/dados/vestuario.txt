@@ -1,8 +1,0 @@
-Nome:A,
-Código:A,
-Valor:A,
-Marca:A,
-Tamanho:4,
-Cor:4,
-Material:4;
-

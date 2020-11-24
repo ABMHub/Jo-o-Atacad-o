@@ -22,7 +22,7 @@ import joaoatacadao.JoaoAtacadao;
 public class ListarProdutos extends javax.swing.JFrame {
 
     private int pagina = 0;
-    private String arquivo = new String("lucas.txt");
+    private String arquivo = new String("dados/celulares.txt");
     
     public ListarProdutos() {
         initComponents();
@@ -51,7 +51,7 @@ public class ListarProdutos extends javax.swing.JFrame {
     
     public void updateArquivo () {
         if (cmbDepartamentos.getSelectedIndex() == 0) return;
-        arquivo = Normalizer.normalize(((String) cmbDepartamentos.getSelectedItem())
+        arquivo = "dados/" +  Normalizer.normalize(((String) cmbDepartamentos.getSelectedItem())
                 .toLowerCase(), Normalizer.Form.NFD)
                 .replaceAll("[^\\p{ASCII}]", "") + ".txt";
     }
@@ -127,7 +127,7 @@ public class ListarProdutos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Código", "Preço", "Marca"
+                "Código", "Nome", "Preço", "Marca"
             }
         ));
         jScrollPane1.setViewportView(tblProdutos);

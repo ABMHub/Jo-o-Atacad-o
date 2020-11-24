@@ -1,8 +1,0 @@
-Nome:2,
-Código:2,
-Valor:2,
-Marca:2,
-Consumo de energia:3,
-Potência:1,
-Smart:false;
-
