@@ -46,4 +46,11 @@ public class Livros extends Entretenimento {
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nAutor: " + autor + ",\nEditora: " + editora +
+                ",\nQuantidade de Páginas: " + qtdPaginas + ",\nISBN: " + ISBN;
+    }
+    
 }

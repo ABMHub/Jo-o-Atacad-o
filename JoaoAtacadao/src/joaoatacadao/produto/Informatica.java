@@ -26,4 +26,11 @@ public abstract class Informatica extends Produto {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nCor: " + cor + ",\nModelo: " + modelo;
+    }
+    
+    
 }

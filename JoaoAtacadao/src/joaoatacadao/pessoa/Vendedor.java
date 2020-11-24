@@ -18,5 +18,12 @@ public class Vendedor extends Funcionario {
     public void setQuantidadeVendas(int quantidadeVendas) {
         this.quantidadeVendas = quantidadeVendas;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nVendedor: " + ",\nQuantidade de Vendas: " + quantidadeVendas;
+    }
+    
+    
     
 }

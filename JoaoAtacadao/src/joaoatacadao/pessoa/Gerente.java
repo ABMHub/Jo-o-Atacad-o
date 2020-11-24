@@ -18,5 +18,12 @@ public class Gerente extends Funcionario {
     public void setSenhaGerente(String senhaGerente) {
         this.senhaGerente = senhaGerente;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nSenha do Gerente: " + senhaGerente;
+    }
+    
+    
     
 }

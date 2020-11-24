@@ -56,4 +56,13 @@ public class Computador extends Informatica {
     public void setRgb(boolean rgb) {
         this.rgb = rgb;
     }
+
+    @Override
+    public String toString() {
+        String auxRgb = rgb ? "Tem RGB" : "Não tem RGB";
+        return super.toString() + ",\nProcessador: " + processador + ",\nGPU: " + gpu +
+                ",\nMemória=" + memoria + ",\nFonte: " + fonte + ",\nRGB: " + auxRgb;
+    }
+    
+    
 }

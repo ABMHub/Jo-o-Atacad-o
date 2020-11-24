@@ -26,6 +26,11 @@ public class Filmes extends Entretenimento {
     public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nDiretor: " + diretor + ",\nDuração: " + duracao;
+    }   
     
     
     

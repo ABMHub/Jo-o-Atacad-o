@@ -28,5 +28,10 @@ public class Cliente extends Pessoa {
     public void setSenhaCartaoFidelidade(String senhaCartaoFidelidade) {
         this.senhaCartaoFidelidade = senhaCartaoFidelidade;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nSaldo em Conta: " + saldoEmConta + ",\nSenha do Cartão Fidelidade: " + senhaCartaoFidelidade;
+    }
     
 }
