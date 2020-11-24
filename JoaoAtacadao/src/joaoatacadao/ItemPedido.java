@@ -14,8 +14,7 @@ public class ItemPedido {
     private int quantidade;
     Produto produto;
 
-    public ItemPedido(int quantidade, String []dados) {
-        this.quantidade = quantidade;
+    public ItemPedido(String []dados) {
         
         switch(dados[0].charAt(0))
         {
@@ -64,7 +63,11 @@ public class ItemPedido {
             default:
                 break;   //Deu ruim
         }
-        
-        subtotal = (float)quantidade * Float.parseFloat(dados[1]);
     }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+        subtotal = (float)quantidade * produto.getValor();
+    }
+    
 }
