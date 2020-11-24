@@ -26,4 +26,11 @@ public class Periferico extends Informatica {
     public void setPadraoDeEntrada(String padraoDeEntrada) {
         this.padraoDeEntrada = padraoDeEntrada;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nTipo: " + tipo + ",\nPadrão de Entrada: " + padraoDeEntrada;
+    }
+    
+    
 }

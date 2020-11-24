@@ -36,4 +36,11 @@ public class Vestuario extends Produto{
     public void setMaterial(String material) {
         this.material = material;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nTamanho: " + tamanho + ",\nCor=" + cor + ",\nMaterial=" + material;
+    }
+    
+    
 }

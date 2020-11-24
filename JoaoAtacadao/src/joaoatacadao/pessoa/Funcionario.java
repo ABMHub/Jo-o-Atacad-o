@@ -27,5 +27,12 @@ public class Funcionario extends Pessoa {
     public void setIdentificação(String identificação) {
         this.identificação = identificação;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ",\nSalário: " + salario + ",\nIdentificação: " + identificação;
+    }
+    
+    
     
 }
