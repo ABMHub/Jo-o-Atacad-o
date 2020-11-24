@@ -1,0 +1,17 @@
+CPF:33,
+Nome:ss,
+Data de nascimento:33;
+
+CPF:976543,
+Nome:Lucas ADM,
+Data de nascimento:02/10/2000,
+Senha:asdf;
+
+CPF:88,
+Nome:eee,
+Data de nascimento:88;
+
+CPF:t,
+Nome:z,
+Data de nascimento:t;
+

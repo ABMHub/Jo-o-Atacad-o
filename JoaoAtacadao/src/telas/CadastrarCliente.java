@@ -5,7 +5,13 @@
  */
 package telas;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import static joaoatacadao.BancoDeDados.escritor;
+
 
 /**
  *
@@ -18,6 +24,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
      */
     public CadastrarCliente() {
         initComponents();
+        
     }
 
     /**
@@ -213,7 +220,32 @@ public class CadastrarCliente extends javax.swing.JFrame {
         if(txtNome.getText().equals("") || txtDataNascimento.getText().equals("") 
                 || txtCpf.getText().equals("") || txtLimiteCartao.getText().equals("") 
                 || pswSenhaCartao.getPassword().equals("") || senha.equals(""))
-            JOptionPane.showMessageDialog(null, "Todos os dados devem ser inseridos!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Todos os dados devem ser inseridos!!!", "Aviso", JOptionPane.WARNING_MESSAGE);else
+        {
+            String temp = "";
+            
+            temp += "CPF:" + txtCpf.getText();
+            temp += ",\nNome:" + txtNome.getText();
+            temp += ",\nData de nascimento:" + txtDataNascimento.getText();
+            temp += ",\nSenha:" + senha;
+            temp += ",\nLimite:" + txtLimiteCartao.getText() + ";\n\n";
+
+            try
+            {
+                escritor("dados/" + "cadastrarCliente.txt", temp);
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+                txtCpf.setText("");
+                txtNome.setText("");
+                txtDataNascimento.setText("");
+                txtLimiteCartao.setText("");
+                pswSenhaCartao.setText("");
+            
+            }catch (IOException ex) 
+            {
+                Logger.getLogger(TelaCadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

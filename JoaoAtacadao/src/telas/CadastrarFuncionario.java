@@ -5,7 +5,13 @@
  */
 package telas;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import static joaoatacadao.BancoDeDados.escritor;
+
 
 /**
  *
@@ -60,6 +66,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         lblFuncao.setText("Gerente:");
 
         txtNome.setToolTipText("Nome do funcionário");
+        txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNomeFocusGained(evt);
+            }
+        });
 
         txtDataNascimento.setToolTipText("Data de Nascimento do funcionário");
 
@@ -168,6 +180,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtNome.getAccessibleContext().setAccessibleName("n");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -203,11 +217,42 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String senha = new String(pswSenhaGerente.getPassword()).trim();
         
-        if(txtNome.getText().equals("") || txtDataNascimento.getText().equals("") || txtCpf.getText().equals(""))
+        if((txtNome.getText().equals("") || txtDataNascimento.getText().equals("") || txtCpf.getText().equals("")) || rdbSim.isSelected() && senha.equals(""))
+        {
             JOptionPane.showMessageDialog(null, "Todos os dados devem ser inseridos!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
-        else if(rdbSim.isSelected() && senha.equals(""))
-            JOptionPane.showMessageDialog(null, "Todos os dados devem ser inseridos!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }else
+        {
+            String temp = "";
+            
+            temp += "CPF:" + txtCpf.getText();
+            temp += ",\nNome:" + txtNome.getText();
+            temp += ",\nData de nascimento:" + txtDataNascimento.getText();
+            
+            if(rdbSim.isSelected())
+                temp += ",\nSenha:" + senha;
+            
+            temp += ";\n\n";
+
+            try
+            {
+                escritor("dados/" + "cadastrarFuncionario.txt", temp);
+                JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+                txtCpf.setText("");
+                txtNome.setText("");
+                txtDataNascimento.setText("");
+                pswSenhaGerente.setText("");
+                    
+            }catch (IOException ex) 
+            {
+                Logger.getLogger(TelaCadastraProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
+   
+    }//GEN-LAST:event_txtNomeFocusGained
 
     /**
      * @param args the command line arguments
