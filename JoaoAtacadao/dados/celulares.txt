@@ -1,11 +1,11 @@
-Nome:22,
-Código:333,
-Valor:444,
-Marca:555,
-Cor:666,
-Modelo:777,
-Tamanho:444,
-Memória:222,
-Processador:111,
-Câmera:444;
+Código:A-09009,
+Nome:Celular,
+Valor:4,
+Marca:4,
+Cor:4,
+Modelo:4,
+Tamanho:4,
+Memória:44,
+Processador:4,
+Câmera:4;
 

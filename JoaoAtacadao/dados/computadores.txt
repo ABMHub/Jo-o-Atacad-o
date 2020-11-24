@@ -1,0 +1,12 @@
+Código:5,
+Nome:5,
+Valor:55,
+Marca:55,
+Cor:5,
+Modelo:55,
+Processador:5,
+GPU:5,
+Fonte:5,
+Memória:5,
+RGB:5;
+

@@ -1,8 +1,8 @@
-Nome:435,
-Código:33,
-Valor:33,
-Marca:44,
-Tamanho:555,
-Cor:666,
-Material:222;
+Código:6,
+Nome:6,
+Valor:6,
+Marca:6,
+Tamanho:6,
+Cor:6,
+Material:6;
 
