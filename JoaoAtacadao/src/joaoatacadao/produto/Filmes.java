@@ -1,3 +1,6 @@
+/*
+    Classe concreta Filmes que implementa o método toString de suas classes pais
+*/
 
 package joaoatacadao.produto;
 

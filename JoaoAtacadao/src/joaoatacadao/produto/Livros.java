@@ -1,4 +1,6 @@
-
+/*
+    Classe concreta Livros que implementa o método toString de suas classes pais
+*/
 package joaoatacadao.produto;
 
 public class Livros extends Entretenimento {

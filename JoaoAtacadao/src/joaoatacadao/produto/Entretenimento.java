@@ -1,3 +1,6 @@
+/*
+    Classe abstrata que cria mais atributos específicos dos quais os produtos podem derivar
+*/
 
 package joaoatacadao.produto;
 

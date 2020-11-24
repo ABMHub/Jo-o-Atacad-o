@@ -1,4 +1,6 @@
-
+/*
+    Classe Vestuário concreta, ela implementa o método abstrato de suas classes pais.
+*/
 package joaoatacadao.produto;
 
 public class Vestuario extends Produto{

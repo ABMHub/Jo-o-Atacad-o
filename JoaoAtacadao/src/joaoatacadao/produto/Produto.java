@@ -1,4 +1,7 @@
-
+/*
+    Classe abstrata produto que possui várias classes derivadas. Note que o método toString é abstrato.
+    Aqui são encontrados atributos básicos que os produtos têm em comum.
+*/
 package joaoatacadao.produto;
 
 public abstract class Produto {

@@ -17,10 +17,6 @@ import joaoatacadao.ItemPedido;
 import joaoatacadao.pessoa.Cliente;
 import joaoatacadao.produto.Produto;
 
-/**
- *
- * @author João Víctor
- */
 public class Caixa extends javax.swing.JFrame {
     ArrayList <ItemPedido> itens = new ArrayList<>();
     ItemPedido item;

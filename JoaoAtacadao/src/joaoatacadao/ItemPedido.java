@@ -1,4 +1,10 @@
+/*
+    Classe ItemPedido que cria, a partir de parâmetros, um objeto adequado do tipo produto.
+    Ela decide qual objeto criar a partir do código de barras como pode ser visto no switch case
 
+    O método setQuantidade também calcula o subtotal de produtos do mesmo tipo, isto é, multiplica 
+    o valor do item pela quantidade itens (iguais) que serão comprados.
+*/
 package joaoatacadao;
 
 import joaoatacadao.produto.Celular;

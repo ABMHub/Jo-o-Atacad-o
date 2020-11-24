@@ -1,3 +1,6 @@
+/*
+    Classe concreta Periférico que implementa o método toString de sua classe pai
+*/
 
 package joaoatacadao.produto;
 
