@@ -1,0 +1,12 @@
+Código:B-8,
+Nome:5,
+Valor:7,
+Marca:7,
+Cor:7,
+Modelo:7,
+Processador:7,
+GPU:7,
+Memória:7,
+Fonte:7,
+RGB:false;
+
