@@ -6,16 +6,18 @@
 package telas;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static joaoatacadao.BancoDeDados.pesquisa;
+import joaoatacadao.ItemPedido;
 
 /**
  *
  * @author Joaop
  */
 public class Caixa extends javax.swing.JFrame {
-
+    ArrayList <ItemPedido> itens = new ArrayList<>();  
     /**
      * Creates new form Carrinho
      */
@@ -35,6 +37,7 @@ public class Caixa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        txtQuantidade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +52,8 @@ public class Caixa extends javax.swing.JFrame {
             }
         });
 
+        txtQuantidade.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,9 +62,12 @@ public class Caixa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
-                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtQuantidade)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(jButton1)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,7 +78,9 @@ public class Caixa extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtQuantidade)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,6 +89,7 @@ public class Caixa extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String codigo = txtCodigo.getText();
         String arquivo;
+        String [] dados = null;
         switch(codigo.charAt(0))
         {
             case 'a': 
@@ -122,10 +133,13 @@ public class Caixa extends javax.swing.JFrame {
         }
         
         try {
-            String [] dados = pesquisa(arquivo, codigo);
+            dados = pesquisa(arquivo, codigo);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        ItemPedido item = new ItemPedido(Integer.parseInt(txtQuantidade.getText()), dados);
+        itens.add(item);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -168,5 +182,6 @@ public class Caixa extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JLabel txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }
