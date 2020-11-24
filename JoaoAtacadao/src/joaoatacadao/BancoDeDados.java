@@ -60,11 +60,19 @@ public class BancoDeDados {
     public static String[] pesquisa(String arquivo, String codigo) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
         
-        if (!(entrada.hasNextLine()))
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
             return null;
+        }
+            
         
         entrada.useDelimiter(codigo);
         entrada.next();
+        
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
+            return null;
+        }
         
         entrada.useDelimiter(",");
         String[] codigoAux = {entrada.next()};
@@ -72,8 +80,10 @@ public class BancoDeDados {
         entrada.useDelimiter("\n");
         entrada.next();
         
-        if (!(entrada.hasNextLine()))
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
             return null;
+        }
         
         entrada.useDelimiter(";");
         
@@ -91,8 +101,10 @@ public class BancoDeDados {
     public static ArrayList leitura(String arquivo, int pg) throws FileNotFoundException {
         Scanner entrada = new Scanner(new File(arquivo));
         
-        if (!(entrada.hasNextLine()))
-                return new ArrayList();
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
+            return null;
+        }
         
         for (int i = 0; i < pg*10; i++) {
             entrada.useDelimiter(";");
@@ -116,8 +128,10 @@ public class BancoDeDados {
             entrada.useDelimiter("\n");
             entrada.next();
             
-            if (!(entrada.hasNextLine()))
-                return lista;
+            if (!(entrada.hasNextLine())) {
+                entrada.close();
+                return null;
+            }   
         }
         
         entrada.close();
@@ -130,8 +144,10 @@ public class BancoDeDados {
         String codAnalise;
         String stringAux;
         
-        if (!(entrada.hasNextLine()))
-                return;
+        if (!(entrada.hasNextLine())) {
+            entrada.close();
+            return;
+        }
         
         do {                       
             entrada.useDelimiter(",");
@@ -175,8 +191,7 @@ public class BancoDeDados {
             Logger.getLogger(BancoDeDados.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if (!(entrada.hasNextLine()))
-            return;     
+        entrada.close();
     }
     
     public static void editar (String arquivo, String codigo, String dado) throws FileNotFoundException {

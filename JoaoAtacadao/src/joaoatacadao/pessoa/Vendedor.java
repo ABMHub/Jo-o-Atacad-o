@@ -5,7 +5,7 @@ import java.util.Date;
 public class Vendedor extends Funcionario {
     private int quantidadeVendas;
 
-    public Vendedor(String nome, Date dataNascimento, long cpf, 
+    public Vendedor(String nome, String dataNascimento, long cpf, 
                     double salario, String identificação, int quantidadeVendas){
         super(nome, dataNascimento, cpf, salario, identificação);
         this.quantidadeVendas = quantidadeVendas;

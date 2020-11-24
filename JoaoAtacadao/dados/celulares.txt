@@ -9,3 +9,14 @@ Memória:44,
 Processador:4,
 Câmera:4;
 
+Código:543,
+Nome:34,
+Valor:3,
+Marca:54,
+Cor:54,
+Modelo:3,
+Tamanho:53,
+Memória:54,
+Processador:543,
+Câmera:3;
+

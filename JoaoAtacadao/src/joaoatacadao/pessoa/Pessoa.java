@@ -1,13 +1,11 @@
 package joaoatacadao.pessoa;
 
-import java.util.Date;
-
 public abstract class Pessoa {
     protected String nome;
-    protected Date dataNascimento;
+    protected String dataNascimento;
     protected long cpf;
     
-    public Pessoa(String nome, Date dataNascimento, long cpf){
+    public Pessoa(String nome, String dataNascimento, long cpf){
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
@@ -17,7 +15,7 @@ public abstract class Pessoa {
         return nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
@@ -29,7 +27,7 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

@@ -1,0 +1,30 @@
+Código:gabc,
+Nome:hj,
+Valor:10,
+Marca:jhkj,
+Faixa Etária:10,
+Tema:hAutor:hkjhkj,
+Editora:hjk,
+Quantidade de páginas:10,
+ISBN:h;
+
+Código:g111,
+Nome:hj,
+Valor:20,
+Marca:jhkj,
+Faixa Etária:20,
+Tema:hAutor:hkjhkj,
+Editora:hjk,
+Quantidade de páginas:20,
+ISBN:h;
+
+Código:g222,
+Nome:hj,
+Valor:30,
+Marca:jhkj,
+Faixa Etária:30,
+Tema:hAutor:hkjhkj,
+Editora:hjk,
+Quantidade de páginas:30,
+ISBN:h;
+

@@ -27,8 +27,8 @@ public class JoaoAtacadao {
         //new NewJFrame().setVisible(true);
         //new CadastrarProduto().setVisible(true); 
         //new ListarProdutos().setVisible(true);
-        new GerenciaProdutos().setVisible(true);
-        //new CadastrarCliente().setVisible(true);
+        //new GerenciaProdutos().setVisible(true);
+        new CadastrarCliente().setVisible(true);
         //new CadastrarFuncionario().setVisible(true);
         //new Caixa().setVisible(true);
         //System.out.println(Arrays.toString(BancoDeDados.leitor("lucas.txt", "aaaaaaaaaaaaaaaaa")) == "null" ? "Não existe" : "Existe" );
