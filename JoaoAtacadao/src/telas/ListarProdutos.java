@@ -22,6 +22,7 @@ public class ListarProdutos extends javax.swing.JFrame {
 
     private int pagina = 0;
     private String arquivo = new String("dados/celulares.txt");
+    ArrayList<String[]> produtos;
     
     public ListarProdutos() {
         initComponents();
@@ -93,7 +94,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         tblProdutos = new javax.swing.JTable();
         btnDireita = new javax.swing.JButton();
         btnEsquerda = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/gerente1.png")).getImage());
@@ -167,13 +168,13 @@ public class ListarProdutos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/excluir2.png"))); // NOI18N
-        jButton1.setMnemonic('E');
-        jButton1.setText("Excluir");
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/excluir2.png"))); // NOI18N
+        btnExcluir.setMnemonic('E');
+        btnExcluir.setText("Excluir");
+        btnExcluir.setFocusPainted(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -217,7 +218,7 @@ public class ListarProdutos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPesquisarTodos)
                 .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addComponent(btnExcluir)
                 .addGap(73, 73, 73))
         );
         pnlListarProdutosLayout.setVerticalGroup(
@@ -237,7 +238,7 @@ public class ListarProdutos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlListarProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPesquisarTodos)
-                    .addComponent(jButton1))
+                    .addComponent(btnExcluir))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -268,16 +269,15 @@ public class ListarProdutos extends javax.swing.JFrame {
 
     private void btnPesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTodosActionPerformed
         updateArquivo();
-        ArrayList lista = new ArrayList();
         pagina = 0;
         try {
-            lista = BancoDeDados.leitura(arquivo, pagina);
+            produtos = BancoDeDados.leitura(arquivo, pagina);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        if (lista != null)
-            criaTabela(lista);
+        if (produtos != null)
+            criaTabela(produtos);
     }//GEN-LAST:event_btnPesquisarTodosActionPerformed
 
     private void btnDireitaActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -288,8 +288,10 @@ public class ListarProdutos extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (lista != null)
+        if (lista != null) {
+            produtos = lista;
             criaTabela(lista);
+        }
         else
             pagina -= 1;
     }                                        
@@ -304,8 +306,10 @@ public class ListarProdutos extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (lista != null)
+        if (lista != null) {
+            produtos = lista;
             criaTabela(lista);
+        }
         else
             pagina += 1;
     }                                        
@@ -327,9 +331,27 @@ public class ListarProdutos extends javax.swing.JFrame {
             
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int index = tblProdutos.getSelectedRow();
+        if (index < 0)
+            return;
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            BancoDeDados.remover(arquivo, produtos.get(index)[0]);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            produtos = BancoDeDados.leitura(arquivo, pagina);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (produtos != null)
+            criaTabela(produtos);
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,10 +391,10 @@ public class ListarProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDireita;
     private javax.swing.JButton btnEsquerda;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnPesquisarTodos;
     private javax.swing.JComboBox<String> cmbDepartamentos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDepartamento;
     private javax.swing.JLabel lblPesquisaDeProdutos;

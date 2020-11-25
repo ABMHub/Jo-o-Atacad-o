@@ -105,7 +105,7 @@ public class BancoDeDados {
         
         if (!(entrada.hasNextLine())) {                     // Encerra a função caso o arquivo termine
             entrada.close();
-            return null;
+            return new ArrayList();
         }
         
         for (int i = 0; i < pg*10; i++) {                   // Pula o arquivo até página escolhida
@@ -122,9 +122,14 @@ public class BancoDeDados {
         for (int j = 0; j < 10; j++) {                      // Lê os 10 próximos 
             entrada.useDelimiter(";");
             String[] vetor = entrada.next().split(",");     // Separa os atributos
+            
+            if (!(entrada.hasNextLine())) {                 // Se o arquivo tiver acabado, retorna a lista
+                entrada.close();
+                return lista;
+            }              
+
             for (int i = 0; i < vetor.length; i++) {
                 vetor[i] = (vetor[i].split(":"))[1];        // Isola os atributos
-                System.out.println(vetor[i]);
             }
             lista.add(vetor);                               // Adiciona vetor na lista
             
@@ -167,10 +172,6 @@ public class BancoDeDados {
                 
                 if (!remover) {                                                 // Caso queiramos editar, adicionamos a nova versão do dado na nova versão do arquivo
                     texto = texto + "\n" + dado;
-                }
-                
-                else {
-                    texto = texto + "\n";                                       // Caso queiramos deletar, apenas pulamos uma linha
                 }
                 
                 while (entrada.hasNextLine()) {                                 // Depois que achamos o objeto, iteraremos o restante do arquivo para salva-lo
