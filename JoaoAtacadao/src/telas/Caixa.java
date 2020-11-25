@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -127,6 +128,7 @@ public class Caixa extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
+        lblItem = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jTextPane1);
 
@@ -142,7 +144,6 @@ public class Caixa extends javax.swing.JFrame {
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pesquisar1.png"))); // NOI18N
         btnPesquisar.setMnemonic('P');
         btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setToolTipText("");
         btnPesquisar.setFocusPainted(false);
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +163,7 @@ public class Caixa extends javax.swing.JFrame {
                 java.lang.Long.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -174,9 +175,6 @@ public class Caixa extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblProdutos);
-        if (tblProdutos.getColumnModel().getColumnCount() > 0) {
-            tblProdutos.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         txaDadosProduto.setEditable(false);
         txaDadosProduto.setColumns(20);
@@ -243,6 +241,9 @@ public class Caixa extends javax.swing.JFrame {
         lblTotal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblTotal.setText("0.0");
 
+        lblItem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/carrinho1.png"))); // NOI18N
+
         javax.swing.GroupLayout pnlCaixaLayout = new javax.swing.GroupLayout(pnlCaixa);
         pnlCaixa.setLayout(pnlCaixaLayout);
         pnlCaixaLayout.setHorizontalGroup(
@@ -271,7 +272,9 @@ public class Caixa extends javax.swing.JFrame {
                     .addGroup(pnlCaixaLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblItem, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCaixaLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
@@ -289,12 +292,15 @@ public class Caixa extends javax.swing.JFrame {
         pnlCaixaLayout.setVerticalGroup(
             pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCaixaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblTotal)
-                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPesquisar))
+                .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlCaixaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblTotal)
+                            .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPesquisar)))
+                    .addComponent(lblItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCaixaLayout.createSequentialGroup()
@@ -343,49 +349,57 @@ public class Caixa extends javax.swing.JFrame {
     eventualmente, poderá ou não ser adicionado na arraylist.
     */
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-
         String codigo = txtPesquisar.getText();
         String arquivo;
         String [] dados = null;
+        ImageIcon img;
         switch(codigo.charAt(0))
         {
             case 'a': 
             case 'A':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/celular1.png"));
                 arquivo = "celulares.txt";
                 break;
             
             case 'b': 
             case 'B':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/computador1.png"));
                 arquivo = "computadores.txt";
                 break;
                 
             case 'c': 
             case 'C':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/eletroeletronicos1.png"));
                 arquivo = "eletroeletronicos.txt";
                 break;
                 
             case 'd': 
             case 'D':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/filme1.png"));
                 arquivo = "filmes.txt";
                 break;    
             
             case 'e': 
             case 'E':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/periferico1.png"));
                 arquivo = "perifericos.txt";
                 break;
             
             case 'f': 
             case 'F':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/vestuario1.png"));
                 arquivo = "vestuario.txt";
                 break;    
                 
             case 'g':
             case 'G':
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/livro1.png"));
                 arquivo = "livros.txt";
                 break;
                 
             default:
-                arquivo = "choremos.txt";   //Deu ruim
+                img = new javax.swing.ImageIcon(getClass().getResource("/imagens/carrinho1.png"));
+                arquivo = "erro.txt";   //Deu ruim
                
         }
         
@@ -395,6 +409,7 @@ public class Caixa extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Caixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         if(dados != null){
+            lblItem.setIcon(img);
             item = new ItemPedido(dados);
             txtQuantidade.setEditable(true);
             txaDadosProduto.setText((item.getProduto()).toString());
@@ -435,6 +450,7 @@ public class Caixa extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String qtd = txtQuantidade.getText();
         item.setQuantidade((qtd.equals("") || Integer.parseInt(qtd) == 0) ? 1 : Integer.parseInt(qtd));
+        lblItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/carrinho1.png")));
         
         resetBtn();
         
@@ -446,6 +462,7 @@ public class Caixa extends javax.swing.JFrame {
                                           
     //Método responsável por fazer a exclusão de um item tanto da tabela quanto da arraylist de produtos
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        lblItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/carrinho1.png")));
         String cpf = JOptionPane.showInputDialog("Gerente, insira seu CPF");
         if (cpf == null) {
             JOptionPane.showMessageDialog(null, "Informe o CPF!", "Falha na Busca", JOptionPane.ERROR_MESSAGE);
@@ -489,6 +506,7 @@ public class Caixa extends javax.swing.JFrame {
     pagar através do cartão fidelidade.
     */
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        lblItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/carrinho1.png")));
         String senha = campoDeSenha("Insira sua senha do cartão fidelidade");
         float total = 0;
         for (int i = 0 ; i < carrinho.getProdutos().size(); i++) {
@@ -511,6 +529,7 @@ public class Caixa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 */
     private void btnDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescontoActionPerformed
+        lblItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/carrinho1.png")));
         if (cliente.ehAniversario()){
             carrinho.setAniversario(true);
             carrinho.atualizaPrecos();
@@ -573,6 +592,7 @@ public class Caixa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JLabel lblItem;
     private javax.swing.JLabel lblPesquisar;
     private javax.swing.JLabel lblQuantidade;
     private javax.swing.JLabel lblTotal;
