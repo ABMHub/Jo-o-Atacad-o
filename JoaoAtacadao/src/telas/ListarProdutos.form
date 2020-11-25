@@ -151,9 +151,6 @@
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
           </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPesquisarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPesquisar">
           <Properties>

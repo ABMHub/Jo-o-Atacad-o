@@ -57,6 +57,57 @@ public class ListarProdutos extends javax.swing.JFrame {
                 .replaceAll("[^\\p{ASCII}]", "") + ".txt";
     }
     
+    public void updateArquivo (String codigo){
+        char escolha = codigo.charAt(0);
+        
+        switch(escolha){
+            //celular
+            case 'a': 
+            case 'A':
+                arquivo = "dados/celulares.txt";
+                break;
+            
+            //computador
+            case 'b': 
+            case 'B':
+                arquivo = "dados/computadores.txt";
+                break;
+                
+            //eletroeletrônicos
+            case 'c': 
+            case 'C':
+                arquivo = "dados/eletroeletronicos.txt";
+                break;
+            
+            //filme
+            case 'd': 
+            case 'D':
+                arquivo = "dados/filmes.txt";
+                break;    
+            
+            //periférico
+            case 'e': 
+            case 'E':
+                arquivo = "dados/perifericos.txt";
+                break;
+                
+            //vestuario
+            case 'f': 
+            case 'F':
+                arquivo = "dados/vestuario.txt";
+                break;    
+                
+            //livro
+            case 'g':
+            case 'G':
+                arquivo = "dados/livros.txt";
+                break;
+                
+            default:
+                break;   //Deu ruim
+        }
+    }
+    
     private void criaTabela(ArrayList<String[]> produtos) {
         DefaultTableModel modelo = new DefaultTableModel( new Object[] { "Código", "Nome", "Preço", "Marca" } , 0);
         
@@ -107,11 +158,6 @@ public class ListarProdutos extends javax.swing.JFrame {
         lblPesquisar.setText("Código:");
 
         txtPesquisar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisarActionPerformed(evt);
-            }
-        });
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pesquisar2.png"))); // NOI18N
         btnPesquisar.setMnemonic('P');
@@ -263,10 +309,6 @@ public class ListarProdutos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPesquisarActionPerformed
-
     private void btnPesquisarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTodosActionPerformed
         updateArquivo();
         pagina = 0;
@@ -315,8 +357,8 @@ public class ListarProdutos extends javax.swing.JFrame {
     }                                        
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        updateArquivo();
         String codigo = txtPesquisar.getText();
+        updateArquivo(codigo);
         String[] lista = null;
         try {
             lista = BancoDeDados.pesquisa(arquivo, codigo);
