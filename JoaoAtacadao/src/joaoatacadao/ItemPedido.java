@@ -39,13 +39,13 @@ public class ItemPedido {
             
             case 'b': 
             case 'B':
-                produto = new Computador(dados[6], dados[7], dados[8], dados[9], Boolean.getBoolean(dados[10]), dados[4], 
+                produto = new Computador(dados[6], dados[7], dados[8], dados[9], Boolean.parseBoolean(dados[10]), dados[4], 
                           dados[5], dados[1], dados[0], Float.parseFloat(dados[2]), dados[3]);
                 break;
                 
             case 'c': 
             case 'C':
-                produto = new Eletroeletronico(dados[4], dados[5], Boolean.getBoolean(dados[6]), dados[1], dados[0], 
+                produto = new Eletroeletronico(dados[4], dados[5], Boolean.parseBoolean(dados[6]), dados[1], dados[0], 
                           Float.parseFloat(dados[2]), dados[3]);
                 break;
                 

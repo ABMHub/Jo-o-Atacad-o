@@ -157,7 +157,7 @@ public class Caixa extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Código", "Preço", "Quantidade", "SubTotal"
+                "Código", "Preço", "Quantidade", "Subtotal"
             }
         ) {
             Class[] types = new Class [] {
@@ -243,7 +243,7 @@ public class Caixa extends javax.swing.JFrame {
         jLabel1.setText("TOTAL:");
 
         lblTotal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        lblTotal.setText("0");
+        lblTotal.setText("0.0");
 
         javax.swing.GroupLayout pnlCaixaLayout = new javax.swing.GroupLayout(pnlCaixa);
         pnlCaixa.setLayout(pnlCaixaLayout);
