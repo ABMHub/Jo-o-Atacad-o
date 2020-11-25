@@ -1,7 +1,6 @@
 package joaoatacadao;
 
 import java.util.ArrayList;
-import joaoatacadao.produto.Produto;
 
 public class Carrinho {
     private float total;
