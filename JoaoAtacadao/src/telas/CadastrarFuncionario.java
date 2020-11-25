@@ -38,6 +38,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         rdbSim = new javax.swing.JRadioButton();
         rdbNao = new javax.swing.JRadioButton();
         pswSenhaGerente = new javax.swing.JPasswordField();
+        lblSalario = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/funcionario2.png")).getImage());
@@ -106,6 +108,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         rdbNao.setSelected(true);
         rdbNao.setText("Não");
 
+        lblSalario.setText("Salário:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -113,7 +117,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
                 .addGap(83, 83, 83))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -124,22 +128,24 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                         .addComponent(lblNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblFuncao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblSenhaGerente))
+                    .addComponent(lblSenhaGerente)
+                    .addComponent(lblSalario))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pswSenhaGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(rdbSim)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(rdbNao))
-                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnOk))
-                    .addComponent(pswSenhaGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,16 +163,21 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                     .addComponent(lblCpf)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFuncao)
-                    .addComponent(btnOk)
-                    .addComponent(rdbSim)
-                    .addComponent(rdbNao))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblSalario)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFuncao, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rdbSim)
+                        .addComponent(rdbNao)
+                        .addComponent(btnOk)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSenhaGerente)
                     .addComponent(pswSenhaGerente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
@@ -185,7 +196,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 286, Short.MAX_VALUE)
+            .addGap(0, 333, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -227,6 +238,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             temp += "CPF:" + txtCpf.getText();
             temp += ",\nNome:" + txtNome.getText();
             temp += ",\nData de nascimento:" + txtDataNascimento.getText();
+            temp += ",\nSalário: " + txtSalario.getText();
             
             if(rdbSim.isSelected())
                 temp += ",\nSenha:" + senha;
@@ -300,6 +312,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel lblDataNascimento;
     private javax.swing.JLabel lblFuncao;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblSalario;
     private javax.swing.JLabel lblSenhaGerente;
     private javax.swing.JPasswordField pswSenhaGerente;
     private javax.swing.JRadioButton rdbNao;
@@ -307,5 +320,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtDataNascimento;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
