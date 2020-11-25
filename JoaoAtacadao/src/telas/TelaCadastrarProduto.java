@@ -92,7 +92,7 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
                 jLabel6.setText("Modelo:");
                 jLabel7.setText("Processador:");
                 jLabel8.setText("GPU:");
-                jLabel9.setText("Memória::");
+                jLabel9.setText("Memória:");
                 jLabel10.setText("Fonte:");;
                 rdbSim.setVisible(true);
                 rdbNao.setVisible(true);
@@ -170,6 +170,7 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
         rdbNao = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastro1.png")).getImage());
 
         pnlDadosProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -195,16 +196,20 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
 
         jTextField1.setName("Teste"); // NOI18N
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar1.png"))); // NOI18N
         btnSalvar.setMnemonic('S');
         btnSalvar.setText("Salvar");
+        btnSalvar.setFocusPainted(false);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar2.png"))); // NOI18N
         btnCancelar.setMnemonic('C');
         btnCancelar.setText("Cancelar");
+        btnCancelar.setFocusPainted(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -229,9 +234,9 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
                     .addGroup(pnlDadosProdutoLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addComponent(btnCancelar)
-                        .addGap(41, 41, 41))
+                        .addGap(29, 29, 29))
                     .addGroup(pnlDadosProdutoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +291,7 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
                 .addGroup(pnlDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

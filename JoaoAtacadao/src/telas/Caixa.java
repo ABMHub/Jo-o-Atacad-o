@@ -28,6 +28,7 @@ public class Caixa extends javax.swing.JFrame {
     public Caixa() {
         initComponents();
         resetBtn();
+        setResizable(false); // maximize button disable
     }
 
     //Método responsável por reiniciar alguns campos de textos e botões
@@ -69,6 +70,7 @@ public class Caixa extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/caixa1.png")).getImage());
 
         pnlCaixa.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAIXA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11)))); // NOI18N
 
@@ -76,7 +78,10 @@ public class Caixa extends javax.swing.JFrame {
         lblPesquisar.setText("Informe o código de barras:");
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pesquisar1.png"))); // NOI18N
+        btnPesquisar.setMnemonic('P');
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setToolTipText("");
+        btnPesquisar.setFocusPainted(false);
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -120,7 +125,9 @@ public class Caixa extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txaDadosProduto);
 
         btnPagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pagar1.png"))); // NOI18N
+        btnPagar.setMnemonic('g');
         btnPagar.setText("Pagar");
+        btnPagar.setFocusPainted(false);
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPagarActionPerformed(evt);
@@ -132,7 +139,9 @@ public class Caixa extends javax.swing.JFrame {
         txtQuantidade.setEditable(false);
 
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/adicionar1.png"))); // NOI18N
+        btnAdicionar.setMnemonic('A');
         btnAdicionar.setText("Adicionar");
+        btnAdicionar.setFocusPainted(false);
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
@@ -140,7 +149,9 @@ public class Caixa extends javax.swing.JFrame {
         });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/excluir1.png"))); // NOI18N
+        btnExcluir.setMnemonic('E');
         btnExcluir.setText("Excluir");
+        btnExcluir.setFocusPainted(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -148,10 +159,14 @@ public class Caixa extends javax.swing.JFrame {
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alerta1.png"))); // NOI18N
+        jButton1.setMnemonic('r');
         jButton1.setText("Perigo");
+        jButton1.setFocusPainted(false);
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar1.png"))); // NOI18N
+        btnCancelar.setMnemonic('C');
         btnCancelar.setText("Cancelar");
+        btnCancelar.setFocusPainted(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -215,7 +230,7 @@ public class Caixa extends javax.swing.JFrame {
                     .addComponent(btnPagar)
                     .addComponent(jButton1)
                     .addComponent(btnCancelar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

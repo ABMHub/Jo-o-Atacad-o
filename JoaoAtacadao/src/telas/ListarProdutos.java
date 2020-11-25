@@ -96,6 +96,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/gerente1.png")).getImage());
 
         lblPesquisaDeProdutos.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblPesquisaDeProdutos.setText("Pesquisa de Produtos");

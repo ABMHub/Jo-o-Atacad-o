@@ -66,7 +66,7 @@ public class Computador extends Informatica {
         return "Nome: " + nome + ",\nCódigo de Barras: " + codigoDeBarras + ",\nValor: " + valor + ",\nMarca: " + marca
             + ",\nCor: " + cor + ",\nModelo: " + modelo    
             + ",\nProcessador: " + processador + ",\nGPU: " + gpu +
-            ",\nMemória=" + memoria + ",\nFonte: " + fonte + ",\nRGB: " + auxRgb;
+            ",\nMemória:" + memoria + ",\nFonte: " + fonte + ",\nRGB: " + auxRgb;
     }
     
     

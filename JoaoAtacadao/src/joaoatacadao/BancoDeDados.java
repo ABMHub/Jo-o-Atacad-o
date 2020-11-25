@@ -117,7 +117,7 @@ public class BancoDeDados {
                 return null;
         }
         
-        ArrayList lista = new ArrayList();                  // Cria arraylist para a tabela
+        ArrayList lista = new ArrayList<>();                  // Cria arraylist para a tabela
         
         for (int j = 0; j < 10; j++) {                      // Lê os 10 próximos 
             entrada.useDelimiter(";");

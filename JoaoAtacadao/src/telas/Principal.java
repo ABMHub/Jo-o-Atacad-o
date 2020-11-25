@@ -38,10 +38,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/loja1.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cliente1.png"))); // NOI18N
+        jButton1.setMnemonic('C');
         jButton1.setText("Cliente");
         jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +53,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/funcionario1.png"))); // NOI18N
+        jButton2.setMnemonic('F');
         jButton2.setText("Funcionário");
         jButton2.setFocusPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +63,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/produto1.png"))); // NOI18N
+        jButton3.setMnemonic('P');
         jButton3.setText("Produto");
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +73,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gerenciamento.png"))); // NOI18N
+        jButton4.setMnemonic('G');
         jButton4.setText("Gerenciamento");
         jButton4.setFocusPainted(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +83,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/caixa1.png"))); // NOI18N
+        jButton5.setMnemonic('A');
         jButton5.setText("Caixa");
         jButton5.setFocusPainted(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +93,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/saida1.png"))); // NOI18N
+        jButton6.setMnemonic('S');
         jButton6.setText("Sair");
         jButton6.setFocusPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +180,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new GerenciaProdutos().setVisible(true);
+        new ListarProdutos().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -181,7 +188,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.setVisible(false);
+        System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

@@ -37,12 +37,14 @@ public class CadastrarProduto extends javax.swing.JFrame {
         bttVestuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/produto1.png")).getImage());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         lblTexto.setText("Selecione o tipo de produto que será cadastrado:");
 
         bttLivros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/livro1.png"))); // NOI18N
+        bttLivros.setMnemonic('L');
         bttLivros.setText("Livros");
         bttLivros.setDoubleBuffered(true);
         bttLivros.setFocusable(false);
@@ -55,6 +57,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         bttFilmes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/filme1.png"))); // NOI18N
+        bttFilmes.setMnemonic('F');
         bttFilmes.setText("Filmes");
         bttFilmes.setFocusable(false);
         bttFilmes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -66,6 +69,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         bttPerifericos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/periferico1.png"))); // NOI18N
+        bttPerifericos.setMnemonic('P');
         bttPerifericos.setText("Periféricos");
         bttPerifericos.setFocusable(false);
         bttPerifericos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -77,6 +81,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         bttCelulares.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/celular1.png"))); // NOI18N
+        bttCelulares.setMnemonic('C');
         bttCelulares.setText("Celulares");
         bttCelulares.setFocusable(false);
         bttCelulares.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -88,6 +93,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         bttComputadores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/computador 1.png"))); // NOI18N
+        bttComputadores.setMnemonic('O');
         bttComputadores.setText("Computadores");
         bttComputadores.setFocusable(false);
         bttComputadores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -99,6 +105,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         bttEletroeletronicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/eletroeletronicos1.png"))); // NOI18N
+        bttEletroeletronicos.setMnemonic('E');
         bttEletroeletronicos.setText("Eletroeletrônicos");
         bttEletroeletronicos.setFocusable(false);
         bttEletroeletronicos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -110,6 +117,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         });
 
         bttVestuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/vestuario1.png"))); // NOI18N
+        bttVestuario.setMnemonic('V');
         bttVestuario.setText("Vestuário");
         bttVestuario.setFocusable(false);
         bttVestuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
