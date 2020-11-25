@@ -11,10 +11,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
 import joaoatacadao.BancoDeDados;
 import static joaoatacadao.BancoDeDados.pesquisa;
+import joaoatacadao.Carrinho;
 import joaoatacadao.ItemPedido;
 import joaoatacadao.pessoa.Cliente;
 import joaoatacadao.pessoa.Funcionario;
@@ -23,7 +26,7 @@ import joaoatacadao.produto.Produto;
 
 public class Caixa extends javax.swing.JFrame {
     public boolean valido = true;
-    private ArrayList <ItemPedido> itens = new ArrayList();
+    private Carrinho carrinho = new Carrinho();
     private Funcionario funcionario;
     private Cliente cliente;
     private ItemPedido item;
@@ -51,6 +54,17 @@ public class Caixa extends javax.swing.JFrame {
         
         txtQuantidade.setEditable(false);
         
+    }
+    
+    private String campoDeSenha (String mensagem) {
+        JLabel label = new JLabel(mensagem);
+        JPasswordField jpf = new JPasswordField();
+        JOptionPane.showConfirmDialog(null,
+        new Object[]{label, jpf}, "Senha:",
+        JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+        
+        String senhaDigitada = new String(jpf.getPassword());
+        return senhaDigitada;
     }
     
     private void requisitarFuncionario () {
@@ -111,6 +125,8 @@ public class Caixa extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnDesconto = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
 
         jScrollPane2.setViewportView(jTextPane1);
 
@@ -223,6 +239,12 @@ public class Caixa extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("TOTAL:");
+
+        lblTotal.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblTotal.setText("0");
+
         javax.swing.GroupLayout pnlCaixaLayout = new javax.swing.GroupLayout(pnlCaixa);
         pnlCaixa.setLayout(pnlCaixaLayout);
         pnlCaixaLayout.setHorizontalGroup(
@@ -230,18 +252,29 @@ public class Caixa extends javax.swing.JFrame {
             .addGroup(pnlCaixaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnPesquisar)
                     .addComponent(jScrollPane3)
                     .addGroup(pnlCaixaLayout.createSequentialGroup()
                         .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPesquisar)
-                            .addComponent(lblQuantidade, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCaixaLayout.createSequentialGroup()
+                                .addComponent(lblQuantidade)
+                                .addGap(47, 47, 47))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCaixaLayout.createSequentialGroup()
+                                .addComponent(lblPesquisar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlCaixaLayout.createSequentialGroup()
+                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPesquisar)))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlCaixaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCaixaLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(btnDesconto)
@@ -259,20 +292,21 @@ public class Caixa extends javax.swing.JFrame {
             pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCaixaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlCaixaLayout.createSequentialGroup()
+                .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblTotal)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPesquisar))
+                .addGap(18, 18, 18)
+                .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCaixaLayout.createSequentialGroup()
                         .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPesquisar)
-                            .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisar)
-                        .addGap(6, 6, 6)
-                        .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPesquisar)
                             .addComponent(lblQuantidade)
                             .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdicionar)
@@ -280,7 +314,7 @@ public class Caixa extends javax.swing.JFrame {
                     .addComponent(btnPagar)
                     .addComponent(btnDesconto)
                     .addComponent(btnCancelar))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -376,12 +410,12 @@ public class Caixa extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel( new Object[] { "Código", "Preço", "Quantidade", "Subtotal" } , 0);
         
         for (int i = 0; i < produtos.size(); i++ ){
-            Produto prod = itens.get(i).getProduto();
+            Produto prod = carrinho.getProdutos().get(i).getProduto();
             Object linha[] = new Object[] {
                 prod.getCodigoDeBarras(),
                 prod.getValor(),
-                itens.get(i).getQuantidade(),
-                itens.get(i).getSubtotal()
+                carrinho.getProdutos().get(i).getQuantidade(),
+                carrinho.getProdutos().get(i).getSubtotal()
             };
             
             modelo.addRow(linha);
@@ -403,8 +437,10 @@ public class Caixa extends javax.swing.JFrame {
         
         resetBtn();
         
-        itens.add(item);        
-        criaTabela(itens);
+        carrinho.adicionaProduto(item);        
+        criaTabela(carrinho.getProdutos());
+        
+        lblTotal.setText(Float.toString(carrinho.getTotal()));
     }//GEN-LAST:event_btnAdicionarActionPerformed
                                           
     //Método responsável por fazer a exclusão de um item tanto da tabela quanto da arraylist de produtos
@@ -428,7 +464,7 @@ public class Caixa extends javax.swing.JFrame {
         
         Gerente gerente = Gerente.instanciaGerente(dados);
         
-        String senha = JOptionPane.showInputDialog("Gerente, insira sua senha");
+        String senha = campoDeSenha("Gerente, insira sua senha!");
         
         if (senha == null || !gerente.isSenha(senha)) {
             JOptionPane.showMessageDialog(null, "Senha incorreta!", "Erro de validação", JOptionPane.ERROR_MESSAGE);
@@ -436,9 +472,11 @@ public class Caixa extends javax.swing.JFrame {
         }
         
         if (tblProdutos.getSelectedRow() >= 0) {
-            itens.remove(tblProdutos.getSelectedRow());            
+            carrinho.removeProduto(tblProdutos.getSelectedRow());            
         }
-        criaTabela(itens);
+        criaTabela(carrinho.getProdutos());
+        
+        lblTotal.setText(Float.toString(carrinho.getTotal()));
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     
@@ -450,18 +488,19 @@ public class Caixa extends javax.swing.JFrame {
     pagar através do cartão fidelidade.
     */
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        String senha = JOptionPane.showInputDialog("Insira a senha do seu cartão fidelidade");
+        String senha = campoDeSenha("Insira sua senha do cartão fidelidade");
         float total = 0;
-        for (int i = 0 ; i < itens.size(); i++) {
-            total += itens.get(i).getSubtotal();
+        for (int i = 0 ; i < carrinho.getProdutos().size(); i++) {
+            total += carrinho.getProdutos().get(i).getSubtotal();
         }
         if (desconto)
             total = (float) 0.90 * total;
         
         if (cliente.pagar(senha, total)){
             resetBtn();
-            itens = new ArrayList();
-            criaTabela(itens);
+            carrinho.zerarCarrinho();
+            criaTabela(carrinho.getProdutos());
+            lblTotal.setText(Float.toString(carrinho.getTotal()));
         }
     }//GEN-LAST:event_btnPagarActionPerformed
 
@@ -472,7 +511,9 @@ public class Caixa extends javax.swing.JFrame {
 */
     private void btnDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescontoActionPerformed
         if (cliente.ehAniversario()){
-            desconto = true;
+            carrinho.setAniversario(true);
+            carrinho.atualizaPrecos();
+            lblTotal.setText(Float.toString(carrinho.getTotal()));
             JOptionPane.showMessageDialog(null, "Você conseguiu 10% de desconto de aniversariante!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
         
@@ -526,12 +567,14 @@ public class Caixa extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lblPesquisar;
     private javax.swing.JLabel lblQuantidade;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel pnlCaixa;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextArea txaDadosProduto;
