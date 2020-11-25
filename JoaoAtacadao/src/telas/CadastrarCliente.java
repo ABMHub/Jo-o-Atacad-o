@@ -52,9 +52,10 @@ public class CadastrarCliente extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Cliente");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/cliente2.png")).getImage());
 
-        pnlCadastrarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CADASTRO DE CLIENTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        pnlCadastrarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastrar Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         pnlDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -63,12 +64,6 @@ public class CadastrarCliente extends javax.swing.JFrame {
         lblDataNascimento.setText("Data de Nascimento:");
 
         lblCpf.setText("CPF:");
-
-        txtNome.setToolTipText("Nome do Cliente");
-
-        txtDataNascimento.setToolTipText("Data de Nascimento do cliente");
-
-        txtCpf.setToolTipText("CPF do cliente");
 
         javax.swing.GroupLayout pnlDadosClienteLayout = new javax.swing.GroupLayout(pnlDadosCliente);
         pnlDadosCliente.setLayout(pnlDadosClienteLayout);
@@ -106,15 +101,16 @@ public class CadastrarCliente extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        txtNome.getAccessibleContext().setAccessibleName("");
+        txtNome.getAccessibleContext().setAccessibleDescription("");
+        txtDataNascimento.getAccessibleContext().setAccessibleDescription("");
+        txtCpf.getAccessibleContext().setAccessibleDescription("");
+
         pnlCartaoFidelidade.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Fidelidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         lblLimiteCartao.setText("Limite:");
 
         lblSenhaCartao.setText("Senha do Cartão:");
-
-        txtLimiteCartao.setToolTipText("Limite do Cartão Fidelidade");
-
-        pswSenhaCartao.setToolTipText("");
 
         javax.swing.GroupLayout pnlCartaoFidelidadeLayout = new javax.swing.GroupLayout(pnlCartaoFidelidade);
         pnlCartaoFidelidade.setLayout(pnlCartaoFidelidadeLayout);
@@ -144,6 +140,8 @@ public class CadastrarCliente extends javax.swing.JFrame {
                     .addComponent(pswSenhaCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
+
+        txtLimiteCartao.getAccessibleContext().setAccessibleDescription("");
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar1.png"))); // NOI18N
         btnSalvar.setMnemonic('S');

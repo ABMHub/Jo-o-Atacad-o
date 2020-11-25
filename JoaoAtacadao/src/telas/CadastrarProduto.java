@@ -37,6 +37,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
         bttVestuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Produtos");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/produto1.png")).getImage());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro de Produto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N

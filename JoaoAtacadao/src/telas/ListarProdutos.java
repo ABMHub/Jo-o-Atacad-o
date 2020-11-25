@@ -58,7 +58,7 @@ public class ListarProdutos extends javax.swing.JFrame {
     }
     
     private void criaTabela(ArrayList<String[]> produtos) {
-        DefaultTableModel modelo = new DefaultTableModel( new Object[] { "Código", "Nome", "Marca", "Preço" } , 0);
+        DefaultTableModel modelo = new DefaultTableModel( new Object[] { "Código", "Nome", "Preço", "Marca" } , 0);
         
         for (int i = 0; i < produtos.size(); i++ ){
             Object linha[] = new Object[] {
@@ -97,6 +97,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciamento de Produtos");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/gerente1.png")).getImage());
 
         lblPesquisaDeProdutos.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -139,10 +140,7 @@ public class ListarProdutos extends javax.swing.JFrame {
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Preço", "Marca"
@@ -247,6 +245,8 @@ public class ListarProdutos extends javax.swing.JFrame {
                     .addComponent(btnDireita))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        txtPesquisar.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -170,6 +170,7 @@ public class TelaCadastrarProduto extends javax.swing.JFrame {
         rdbNao = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Produto");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastro1.png")).getImage());
 
         pnlDadosProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N

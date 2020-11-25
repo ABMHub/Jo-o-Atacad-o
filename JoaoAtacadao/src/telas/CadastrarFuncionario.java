@@ -44,6 +44,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         txtSalario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Funcionário");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/funcionario2.png")).getImage());
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastrar Funcionário", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -56,17 +57,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
         lblFuncao.setText("Gerente:");
 
-        txtNome.setToolTipText("Nome do funcionário");
         txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNomeFocusGained(evt);
             }
         });
-
-        txtDataNascimento.setToolTipText("Data de Nascimento do funcionário");
-
-        txtCpf.setToolTipText("CPF do funcionário");
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar1.png"))); // NOI18N
         btnSalvar.setMnemonic('S');
@@ -142,7 +138,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                                 .addComponent(rdbSim)
                                 .addGap(18, 18, 18)
                                 .addComponent(rdbNao))
-                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addComponent(btnOk))
@@ -186,7 +182,11 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        txtNome.getAccessibleContext().setAccessibleName("n");
+        txtNome.getAccessibleContext().setAccessibleName("");
+        txtNome.getAccessibleContext().setAccessibleDescription("");
+        txtDataNascimento.getAccessibleContext().setAccessibleName("");
+        txtDataNascimento.getAccessibleContext().setAccessibleDescription("");
+        txtCpf.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

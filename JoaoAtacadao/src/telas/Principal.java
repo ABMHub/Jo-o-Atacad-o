@@ -38,6 +38,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("João Atacadão");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/loja1.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));

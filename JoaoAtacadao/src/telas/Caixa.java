@@ -131,6 +131,7 @@ public class Caixa extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Caixa Registradora");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/caixa1.png")).getImage());
 
         pnlCaixa.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "CAIXA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11)))); // NOI18N
@@ -151,10 +152,7 @@ public class Caixa extends javax.swing.JFrame {
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Preço", "Quantidade", "Subtotal"
@@ -316,6 +314,9 @@ public class Caixa extends javax.swing.JFrame {
                     .addComponent(btnCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtPesquisar.getAccessibleContext().setAccessibleName("");
+        txtPesquisar.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
