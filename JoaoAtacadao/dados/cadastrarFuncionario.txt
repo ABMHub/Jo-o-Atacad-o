@@ -1,0 +1,16 @@
+CPF:123,
+Nome:Lucas,
+Data de nascimento:101010;
+CPF:111,
+Nome:11,
+Data de nascimento:11,
+Senha:111;
+CPF:1010,
+Nome:Lucas,
+Data de nascimento:9-09,
+Salário: 20;
+CPF:123456789,
+Nome:Pedro,
+Data de nascimento:10/10/10,
+Salário: 12.5,
+Senha:123123;

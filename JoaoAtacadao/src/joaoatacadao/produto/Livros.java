@@ -9,7 +9,9 @@ public class Livros extends Entretenimento {
     protected int qtdPaginas;
     protected String ISBN;
 
-    public Livros(String autor, String editora, int qtdPaginas, String ISBN, String faixaEtaria, String tema, String nome, String codigoDeBarras, float valor, String marca) {
+    public Livros(String autor, String editora, int qtdPaginas, String ISBN,
+            String faixaEtaria, String tema, String nome, String codigoDeBarras,
+            float valor, String marca) {
         super(faixaEtaria, tema, nome, codigoDeBarras, valor, marca);
         this.autor = autor;
         this.editora = editora;

@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import static joaoatacadao.BancoDeDados.escritor;
+import static joaoatacadao.Validacao.ehFlutuante;
+import static joaoatacadao.Validacao.ehInteiro;
 
 public class CadastrarFuncionario extends javax.swing.JFrame {
 
@@ -229,9 +231,15 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         String senha = new String(pswSenhaGerente.getPassword()).trim();
         
         if((txtNome.getText().equals("") || txtDataNascimento.getText().equals("") || txtCpf.getText().equals("")) || rdbSim.isSelected() && senha.equals(""))
-        {
             JOptionPane.showMessageDialog(null, "Todos os dados devem ser inseridos!!!", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }else
+
+        else if(!ehInteiro(txtCpf.getText()))
+            JOptionPane.showMessageDialog(null, "O CPF deve ser um número inteiro positivo!", "Aviso", JOptionPane.WARNING_MESSAGE);
+
+        else if(!ehFlutuante(txtSalario.getText()))
+            JOptionPane.showMessageDialog(null, "O Salário deve ser um número flutuante!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        
+        else
         {
             String temp = "";
             
@@ -239,6 +247,8 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             temp += ",\nNome:" + txtNome.getText();
             temp += ",\nData de nascimento:" + txtDataNascimento.getText();
             temp += ",\nSalário: " + txtSalario.getText();
+            
+            
             
             if(rdbSim.isSelected())
                 temp += ",\nSenha:" + senha;

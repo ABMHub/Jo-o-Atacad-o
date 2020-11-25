@@ -17,24 +17,33 @@ import joaoatacadao.BancoDeDados;
 import static joaoatacadao.BancoDeDados.pesquisa;
 import joaoatacadao.ItemPedido;
 import joaoatacadao.pessoa.Cliente;
+import joaoatacadao.pessoa.Funcionario;
+import joaoatacadao.pessoa.Gerente;
 import joaoatacadao.produto.Produto;
 
 public class Caixa extends javax.swing.JFrame {
-    ArrayList <ItemPedido> itens = new ArrayList<>();
-    ItemPedido item;
+    public boolean valido = true;
+    private ArrayList <ItemPedido> itens = new ArrayList();
+    private Funcionario funcionario;
+    private Cliente cliente;
+    private ItemPedido item;
+    boolean desconto = false;
     /**
      * Creates new form Caixa
      */
     public Caixa() {
         initComponents();
         resetBtn();
+        requisitarFuncionario();
+        if (valido)
+            requisitarCliente();
         setResizable(false); // maximize button disable
     }
 
     //Método responsável por reiniciar alguns campos de textos e botões
     public void resetBtn() {
         btnAdicionar.setEnabled(false);
-        btnCancelar.setEnabled(false);
+        btnCancelar.setEnabled(true);
         
         txaDadosProduto.setText("");
         txtQuantidade.setText("");
@@ -44,6 +53,42 @@ public class Caixa extends javax.swing.JFrame {
         
     }
     
+    private void requisitarFuncionario () {
+        String cpf = JOptionPane.showInputDialog("Funcionário, insira seu CPF");
+        String[] dados = null;
+        try {
+            dados = BancoDeDados.pesquisa("dados/cadastrarFuncionario.txt", cpf);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (dados == null) {
+            JOptionPane.showMessageDialog(null, "Funcionario não encontrado!", "Falha na Busca", JOptionPane.ERROR_MESSAGE);
+            this.valido = false;
+        }
+        else {
+            funcionario = Funcionario.instanciarFuncionario(dados);
+        }
+        
+    }
+    
+    private void requisitarCliente () {
+        String cpf = JOptionPane.showInputDialog("Cliente, insira seu CPF");
+        String[] dados = null;
+        try {
+            dados = BancoDeDados.pesquisa("dados/cadastrarCliente.txt", cpf);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (dados == null) {
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado!", "Falha na Busca", JOptionPane.ERROR_MESSAGE);
+            this.valido = false;
+        }
+        else {
+            cliente = Cliente.instanciarCliente(dados);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -64,7 +109,7 @@ public class Caixa extends javax.swing.JFrame {
         txtQuantidade = new javax.swing.JTextField();
         btnAdicionar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnDesconto = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         jScrollPane2.setViewportView(jTextPane1);
@@ -158,10 +203,15 @@ public class Caixa extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/alerta1.png"))); // NOI18N
-        jButton1.setMnemonic('r');
-        jButton1.setText("Perigo");
-        jButton1.setFocusPainted(false);
+        btnDesconto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/desconto.png"))); // NOI18N
+        btnDesconto.setMnemonic('d');
+        btnDesconto.setText("Desconto");
+        btnDesconto.setFocusPainted(false);
+        btnDesconto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescontoActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar1.png"))); // NOI18N
         btnCancelar.setMnemonic('C');
@@ -194,7 +244,7 @@ public class Caixa extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCaixaLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(jButton1)
+                .addComponent(btnDesconto)
                 .addGap(47, 47, 47)
                 .addComponent(btnPagar)
                 .addGap(63, 63, 63)
@@ -228,7 +278,7 @@ public class Caixa extends javax.swing.JFrame {
                     .addComponent(btnAdicionar)
                     .addComponent(btnExcluir)
                     .addComponent(btnPagar)
-                    .addComponent(jButton1)
+                    .addComponent(btnDesconto)
                     .addComponent(btnCancelar))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -340,7 +390,7 @@ public class Caixa extends javax.swing.JFrame {
     }
     
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        resetBtn();
+        this.setVisible(false);
     }                                           
 
     /*
@@ -349,7 +399,7 @@ public class Caixa extends javax.swing.JFrame {
     */
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         String qtd = txtQuantidade.getText();
-        item.setQuantidade(Integer.parseInt(qtd) == 0 ? 1 : Integer.parseInt(qtd));
+        item.setQuantidade((qtd.equals("") || Integer.parseInt(qtd) == 0) ? 1 : Integer.parseInt(qtd));
         
         resetBtn();
         
@@ -359,75 +409,60 @@ public class Caixa extends javax.swing.JFrame {
                                           
     //Método responsável por fazer a exclusão de um item tanto da tabela quanto da arraylist de produtos
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String cpf = JOptionPane.showInputDialog("Gerente, insira seu CPF");
+        if (cpf == null) {
+            JOptionPane.showMessageDialog(null, "Informe o CPF!", "Falha na Busca", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String[] dados = null;
+        try {
+            dados = BancoDeDados.pesquisa("dados/cadastrarFuncionario.txt", cpf);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (dados == null || dados.length != 5) {
+            JOptionPane.showMessageDialog(null, "Informe um CPF de gerente válido!", "Erro de validação", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Gerente gerente = Gerente.instanciaGerente(dados);
+        
+        String senha = JOptionPane.showInputDialog("Gerente, insira sua senha");
+        
+        if (senha == null || !gerente.isSenha(senha)) {
+            JOptionPane.showMessageDialog(null, "Senha incorreta!", "Erro de validação", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         if (tblProdutos.getSelectedRow() >= 0) {
             itens.remove(tblProdutos.getSelectedRow());            
         }
         criaTabela(itens);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    //Um cliente é instanciado para que ele possa efetuar o pagamento 
-    private Cliente instanciarCliente (String[] dados) {
-        return new Cliente(dados[1], dados[2], Long.parseLong(dados[0]), Float.parseFloat(dados[4]), dados[3]);
-    }
     
-    //private cvtBanco (Cliente c) {
-        
-    //}
+    
+    
+    
     /*
     Método responsável por lidar com o pagamento do cliente, tenha em vista que na loja só é possível
     pagar através do cartão fidelidade.
     */
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        String cpf = JOptionPane.showInputDialog("Insira seu CPF");
         String senha = JOptionPane.showInputDialog("Insira a senha do seu cartão fidelidade");
         float total = 0;
         for (int i = 0 ; i < itens.size(); i++) {
             total += itens.get(i).getSubtotal();
         }
+        if (desconto)
+            total = (float) 0.90 * total;
         
-        String[] dados = null;
-        
-        try {
-            dados = BancoDeDados.pesquisa("dados/cadastrarCliente.txt", cpf);
-            
-        } catch (FileNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Caixa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        if (cliente.pagar(senha, total)){
+            resetBtn();
+            itens = new ArrayList();
+            criaTabela(itens);
         }
-        if (dados == null) {
-            JOptionPane.showMessageDialog(null, "CPF não encontrado", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Cliente c = instanciarCliente(dados);
-        
-        if (senha.equals(c.getSenhaCartaoFidelidade())) {
-            if (c.getSaldoEmConta() >= total) {
-                dados[4] = Float.toString((float) c.getSaldoEmConta() - total); 
-                String dado = "CPF:" + dados[0] + ",\nNome:" + dados[1]
-                    + ",\nData de Nascimento:" + dados[2] + ",\nSenha:" + dados[3]
-                    + ",\nSaldo:" + dados[4] + ";";
-
-                System.out.println(dados[4]);
-                System.out.println(total);
-
-                try {
-                    BancoDeDados.editar("dados/cadastrarCliente.txt", Long.toString(c.getCpf()), dado);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Você não tem saldo suficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
-                return;
-            }                 
-        }
-        
-        else {
-            JOptionPane.showMessageDialog(null, "Senha incorreta!", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        
     }//GEN-LAST:event_btnPagarActionPerformed
 
 /*
@@ -435,6 +470,17 @@ public class Caixa extends javax.swing.JFrame {
         resetBtn();
     }//GEN-LAST:event_btnCancelarActionPerformed
 */
+    private void btnDescontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescontoActionPerformed
+        if (cliente.ehAniversario()){
+            desconto = true;
+            JOptionPane.showMessageDialog(null, "Você conseguiu 10% de desconto de aniversariante!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null, "Não existem descontos disponíveis no momento", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDescontoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -476,10 +522,10 @@ public class Caixa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDesconto;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

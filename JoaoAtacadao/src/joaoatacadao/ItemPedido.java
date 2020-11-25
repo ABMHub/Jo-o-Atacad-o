@@ -11,6 +11,7 @@ import joaoatacadao.produto.Celular;
 import joaoatacadao.produto.Computador;
 import joaoatacadao.produto.Eletroeletronico;
 import joaoatacadao.produto.Filmes;
+import joaoatacadao.produto.Livros;
 import joaoatacadao.produto.Periferico;
 import joaoatacadao.produto.Produto;
 import joaoatacadao.produto.Vestuario;
@@ -21,7 +22,12 @@ public class ItemPedido {
     Produto produto;
 
     public ItemPedido(String []dados) {
-        
+        criaProduto(dados);
+        this.subtotal = Float.parseFloat(dados[2]);
+        this.quantidade = 1;
+    }
+    
+    private void criaProduto (String[] dados) {
         switch(dados[0].charAt(0))
         {
             //celular
@@ -62,7 +68,7 @@ public class ItemPedido {
                 
             case 'g':
             case 'G':
-                produto = new Filmes(dados[6], Integer.parseInt(dados[7]), dados[4], dados[5], dados[1], dados[0], 
+                produto = new Livros(dados[6], dados[7], Integer.parseInt(dados[8]), dados[9], dados[4], dados[5], dados[1], dados[0], 
                           Float.parseFloat(dados[2]), dados[3]);
                 break;
                 
@@ -71,6 +77,10 @@ public class ItemPedido {
         }
     }
 
+    private float atualizaPreco (int quantidade) {
+        return quantidade * produto.getValor();
+    }
+    
     public float getSubtotal() {
         return subtotal;
     }
@@ -81,10 +91,10 @@ public class ItemPedido {
 
     public Produto getProduto() {
         return produto;
-    }
+    }   
     
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-        subtotal = (float)quantidade * produto.getValor();
+        subtotal = atualizaPreco(quantidade);
     }
 }
