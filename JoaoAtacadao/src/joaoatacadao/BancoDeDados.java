@@ -108,13 +108,13 @@ public class BancoDeDados {
             return new ArrayList();
         }
         
-        for (int i = 0; i < pg*10; i++) {                   // Pula o arquivo até página escolhida
+        for (int i = 0; i < pg*10; i++) {        // Pula o arquivo até página escolhida
+            if (!(entrada.hasNext()))           // Caso não seja possível chegar até a página escolhida, encerra e retorna null
+                return null;
             entrada.useDelimiter(";");                      
             entrada.next();
             entrada.useDelimiter("\n");
             entrada.next();
-            if (!(entrada.hasNextLine()))                   // Caso não seja possível chegar até a página escolhida, encerra e retorna null
-                return null;
         }
         
         ArrayList lista = new ArrayList<>();                  // Cria arraylist para a tabela
