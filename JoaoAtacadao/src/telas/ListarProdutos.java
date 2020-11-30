@@ -11,8 +11,12 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
 import joaoatacadao.BancoDeDados;
+import joaoatacadao.pessoa.Gerente;
 
 /**
  *
@@ -34,6 +38,17 @@ public class ListarProdutos extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private String campoDeSenha (String mensagem) {
+        JLabel label = new JLabel(mensagem);
+        JPasswordField jpf = new JPasswordField();
+        JOptionPane.showConfirmDialog(null,
+        new Object[]{label, jpf}, "Senha:",
+        JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+        
+        String senhaDigitada = new String(jpf.getPassword());
+        return senhaDigitada;
     }
     
     public void carregaDepartamentos () {
@@ -368,31 +383,56 @@ public class ListarProdutos extends javax.swing.JFrame {
         
         ArrayList arraylist = new ArrayList<>();
         arraylist.add(lista);
+        produtos = arraylist;
         if (lista != null)
             criaTabela(arraylist);
             
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        String cpf = JOptionPane.showInputDialog("Gerente, insira seu CPF");
+        if (cpf == null) {
+            JOptionPane.showMessageDialog(null, "Informe o CPF!", "Falha na Busca", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String[] dados = null;
+        try {
+            dados = BancoDeDados.pesquisa("dados/cadastrarFuncionario.txt", cpf);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (dados == null || dados.length != 5) {
+            JOptionPane.showMessageDialog(null, "Informe um CPF de gerente válido!", "Erro de validação", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Gerente gerente = Gerente.instanciaGerente(dados);
+        
+        String senha = campoDeSenha("Gerente, insira sua senha!");
+        
+        if (senha == null || !gerente.isSenha(senha)) {
+            JOptionPane.showMessageDialog(null, "Senha incorreta!", "Erro de validação", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         int index = tblProdutos.getSelectedRow();
         if (index < 0)
             return;
-        
+        if(produtos == null)
+            return;
         try {
             BancoDeDados.remover(arquivo, produtos.get(index)[0]);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         try {
             produtos = BancoDeDados.leitura(arquivo, pagina);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ListarProdutos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         if (produtos != null)
             criaTabela(produtos);
-        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
